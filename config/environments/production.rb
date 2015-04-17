@@ -72,14 +72,14 @@ Enods::Application.configure do
   #    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
   #  end
 
-  config.action_mailer.default_url_options = {:host => 'www.enods.com'}
+  config.action_mailer.default_url_options = {:host => 'www.indiancraftstudio.com'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
     :port                 => 587,
     #:domain               => 'baci.lindsaar.net',
-    :user_name            => 'enodsweb@gmail.com',
-    :password             => 'enods123',
+    :user_name            => 'indiancraftstudios@gmail.com',
+    :password             => 'indiancraftstudios@123',
     :authentication       => 'plain',
     :enable_starttls_auto => true
   }
@@ -88,4 +88,4 @@ Enods::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 end
-SITE = 'www.enods.com'
+SITE = 'www.indiancraftstudio.com'
