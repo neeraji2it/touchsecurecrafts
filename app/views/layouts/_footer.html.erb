@@ -1,0 +1,79 @@
+<footer>
+  <div class="content">
+    <div class="commonrow">
+      <%= link_to image_tag("/assets/logo.png", :id => "logo"), '/' %>
+      <ul class="list-paymenttype">
+        <li class="icon-paypal"><%= link_to "Paypal", "" %></li>
+        <li class="icon-americanexp"><%= link_to "American Express", "" %></li>
+        <li class="icon-discover"><%= link_to "Discover", "" %></li>
+        <li class="icon-mastercard"><%= link_to "Master Card", "" %></li>
+        <li class="icon-visa"><%= link_to "Visa", "" %></li>
+      </ul>
+    </div>
+    <div class="commonrow">
+      <div class="aboutusBox">
+        <h2><span>About Us</span></h2>
+        <p>Indiancraftstudio.com is a marketplace to "Discover Unique Indian Products" including Handmade, Vintage, Ethnic, Organic and Natural products from India.
+<br><br>
+India is a beautiful assortment of diversity reflected in our Clothing, Food, Lifestyle, Language, Music, Books etc. This diversity is so rich and diverse that an attempt to capture it on a single platform was never made. Indiancraftstudio.com is that sincere attempt by bunch of young insane guys and gals who think this is possible now with the Internet.
+<br><br>
+Indiancraftstudio.com uses a marketplace model to capture the regional variations of India. We connect local artisans & designers directly to global customers and thereby increase their livelihood, remove middlemen, help them create/promote their brand and thereby preserve our culture, traditions and values. We believe this journey will not only help artisans of India but also help customers discover and buy products which they otherwise are not able to do today.
+<br><br>
+Buy Wooden Handicrafts online in India from Indian Craft Studio. If you want to buy imported Wooden Handicrafts, Indian Craft Studio has it all for you. Find great deals on traditional Wooden Handicrafts with high quality; which provide you with a high value product at affordable rate. You will be amazed at the discounted Wooden Handicrafts prices which we offer. We have the best Indian and imported Wooden Handicrafts. Confused on which Wooden Handicrafts to buy? Browse through our extensive range of Wooden Handicrafts. 
+  </p>
+      </div>
+    </div>
+    <div class="commonrow">
+      <ul class="list-media-footer">
+        <li class="icon-twitter"><%= link_to "twitter", "https://twitter.com/enodsnow" %></li>
+        <li class="icon-facebook"><%= link_to "facebook", "https://www.facebook.com/enodsnow" %></li>
+        <li class="icon-googlePlus"><%= link_to "google plus", "https://google.com/+enods" %></li>
+        <li class="icon-pinterest"><%= link_to "pintrest", "http://www.pinterest.com/enodsnow" %></li>
+        <li class="icon-youtube"><%= link_to "you tube", "https://www.youtube.com/user/enodsnow" %></li>
+      </ul>
+    </div>
+    <div class="menu-footer">
+      <ul>
+        <li>
+          <h4>Information</h4>
+          <ul>
+            <li><%= link_to "About Us", about_us_path %></li>
+            <li><%= link_to "Delivery Information", delivary_information_path %></li>
+            <li><%= link_to "Privacy Policy", privacy_policy_path %></li>
+            <li><%= link_to "Terms & Conditions", terms_conditions_path %></li>
+          </ul>
+        </li>
+        <li>
+          <h4>Customer Services</h4>
+          <ul>
+            <li><%= link_to "Contact Us", contact_us_path %></li>
+            <li><%= link_to "Shipping Returns", shipping_returns_path %></li>
+            <li><%= link_to "Secure Shopping", secure_shopping_path %></li>
+          </ul>
+        </li>
+        <li>
+          <h4>Non-Profits</h4>
+          <ul>
+            <li><%= link_to "Non-Profit Login", new_user_session_path() %></li>
+            <li><%= link_to "Non-Profit Sign Up", new_user_path(:role => 'non-profit') %></li>
+            <li><%= link_to "How it Works", how_it_works_path %></li>
+            <li><%= link_to "Non-Profit FAQs", faqs_path %></li>
+          </ul>
+        </li>
+        <li>
+          <h4>My Account</h4>
+          <ul>
+            <li><%= link_to "My Account", "" %></li>
+            <li><%= link_to "Order History", "" %></li>
+            <li><%= link_to "Wishlist", "" %></li>
+            <li><%= link_to "Newsletter", "" %></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="copyright">
+      Copyright © 2014 Indian Craft Studio. All rights reserved.
+    </div>
+    <div class="clearFix"></div>
+  </div>
+</footer>

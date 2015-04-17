@@ -1,0 +1,160 @@
+<%= link_to "<input class='fright' title='Continue Shopping' type='submit' value='Continue Shopping' />".html_safe, '/' %>
+<h6><%= current_cart.line_items.count %>  Items in your Cart</h6>
+<% if !@user_products.to_a.empty? %>
+  <% for line_item in @user_products %>
+    <div class="box-orderfrom">
+      <h4>
+        <%= link_to "Close", cart_path(line_item), :method => :delete, :confirm => "Are You Sure", :class => "icon-close" %>
+        Order from  <%= link_to line_item.product.user.username, seller_path(line_item.product.user) %>
+      </h4>
+      <div class="checkoutColumn">
+        <ul class="list-checkout">
+          <%= form_tag pay_line_item_orders_path(line_item.id), :method => 'GET', :id => "submit_cart_#{line_item.id}" do %>
+            <li>
+              <h6>Ship to</h6>
+              <p>
+                <%= select_tag :country, options_for_select(line_item.product.shipping_products.map{|a| a.country}) %>
+              </p>
+              <h5 class="color-gray"><%= line_item.product.shipping %></h5>
+              <h5>How You'll Pay</h5>
+              <p><input title="Payment Mode" type="radio"> <img alt="" title="" src="/assets/payment-mode_1.png" /></p>
+            </li>	
+            <li>
+              <div class="row-checkout">
+                <div>Item total</div>
+                <div><%= number_to_currency(line_item.full_price) %> USD</div>
+              </div>
+            </li>
+            <% if line_item.product.colors.present? %>
+              <% @color = Color.find_by_product_id_and_product_color(line_item.product.id,line_item.product.colors.collect{|a| a.product_color}) %>
+              <% if @color.product_color.present? %>  
+                <li>
+                  <div class="row-checkout">
+                    <div>Color:</div><br />
+                    <div><%= select_tag :color, options_for_select([["Select",""]]+line_item.product.colors.group(:product_color).collect{|a| a.product_color}) %></div>
+                  </div>
+                </li>
+              <% end %>
+              <% @size = Color.find_by_product_id_and_size(line_item.product.id,line_item.product.colors.collect{|a| a.size}) %>
+              <% if @size.size.present? %> 
+                <li>
+                  <div class="row-checkout">
+                    <div>Size:</div><br />
+                    <div><%= select_tag :size, options_for_select([["Select",""]]+line_item.product.colors.collect{|a| a.size}) %></div>
+                  </div>
+                </li>
+              <% end %>
+              <% @type = Color.find_by_product_id_and_buyer_type(line_item.product.id,line_item.product.colors.collect{|a| a.buyer_type}) %>
+              <% if @type.buyer_type.present? %> 
+                <li>
+                  <div class="row-checkout">
+                    <div>Type:</div><br />
+                    <div><%= select_tag :type, options_for_select([["Select",""]]+line_item.product.colors.group(:buyer_type).collect{|a| a.buyer_type}) %></div>
+                  </div>
+                </li>
+              <% end %>
+            <% end %>
+            <% if line_item.product.non_profit_cause == 'Any' %>
+              <li>
+                <div class="row-checkout">
+                  <div>Select Non-Profit Cause</div><br /><br />
+                  <div><%= select_tag :non_profit_cause, options_for_select([["Select Non-Profit",""], ["Animal Cause", 'Animal Cause'], ["Human Cause", "Human Cause"],["Enivronmental Cause","Environmental Cause"]]), :id => "cause_#{line_item.id}" %></div>
+                </div>
+              </li>
+            <% end %>
+            <li>
+              <div class="row-checkout bold">
+                <div>Order total</div>
+                <div><%= number_to_currency(line_item.full_price) %> USD</div>
+              </div>
+              <%= submit_tag "Proceed to Checkout", :id => "sub_#{line_item.id}" %>
+            </li>
+          <% end %>
+        </ul>	
+        <% if line_item.product.non_profit_cause == 'Any' %>
+          <script>
+            $("#sub_<%= line_item.id%>").click(function() {
+              if ($("#cause_<%=line_item.id%>").val() == '') {
+                alert("Select Non-Profit Cause")
+                return false;
+              } else {
+                $("#submit_cart_<%= line_item.id%>").submit();
+              }
+            });
+          </script>
+        <% end %>
+      </div>
+      <ul class="list-order">
+        <li>
+          <div class="orderThum">
+            <%= image_tag(line_item.product.images.first.image.url(:original), :width => '168', :height => '155', :id => "image_#{line_item.id}", :style => 'cursor: pointer;') %>
+          </div>
+          <script>
+            $(document).ready(function() {
+              $("#image_<%= line_item.id %>").mouseover(function() {
+                $("#image_<%= line_item.id %>").css({width: 170, height: 200});
+              });
+              $("#image_<%= line_item.id %>").mouseleave(function() {
+                $("#image_<%= line_item.id %>").css({width: 168, height: 155});
+              });
+            });
+          </script>
+          <ul class="list-orderDetail">
+            <li><%= link_to line_item.product.title, product_path(line_item.product) %></li>
+            <li>Quantity: 
+              <em id='qua'>
+                <%= link_to line_item.quantity, edit_lineitem_cart_path(line_item), :remote => true, :id => 'lll' %>
+              </em>
+              <span id='line_item_quantiy_<%= line_item.id %>'></span>
+            </li>
+            <li><%= number_to_currency(line_item.product.price) %> USD </li>
+            <li>Donation: <%= number_to_currency(((line_item.full_price.to_f)*(line_item.product.non_profit_percentage))/100) %> USD </li>
+          </ul>
+        </li>
+        <li>
+          <div style="position: relative; left: -12px; width: 618px;">
+            <div class="thum-productDetail" style="width: 78px;"><canvas id="canvas_<%= line_item.id %>" height="72" width="75"></canvas></div>
+            <p style="float: left; margin-top: 17px; width: 218px; margin-left: -2px;"><%= line_item.product.non_profit_percentage %><%= "%" %>  of the proceeds <br>will be donated.</p>
+            <div class="thum-productDetail" style="width: 170px;">
+              <% if line_item.product.non_profit_cause == "Any" %>
+                <%= image_tag("/assets/icon-dog-foot.png", :width => 50, :height => 50) %>
+                <%= image_tag("/assets/icon-glob.png", :width => 50, :height => 50) %>
+                <%= image_tag("/assets/icon-heart.png", :width => 50, :height => 50) %>
+              <% else %>
+                <%= image_tag(line_item.product.non_profit_cause == 'Animal Cause' ? ("/assets/icon-dog-foot.png") : (line_item.product.non_profit_cause == 'Environmental Cause' ? ("/assets/icon-glob.png") : ("/assets/icon-heart.png")), :width => 72, :height => 74) %>
+              <% end %>
+            </div><br />
+            <p style="width: 220px; position: relative; left: 210px;"><a title="The United Nations Children's Fund" href="#"><%= line_item.product.non_profit_cause.capitalize.split("_").join(" ") %></a></p>
+          </div>
+        </li>
+        <li>
+          <%= form_for @comment, :url => create_comment_product_path(line_item.product, :line_item_id => line_item.id), :method => 'POST', :remote => true do |f| %>
+            <span id="error_comment_<%= line_item.id %>" style="color: red;font-weight: bold;font-size: 14px;display: none;">Body Con't be Blank</span>
+            <span id="success_comment_<%= line_item.id %>" style="color: green;font-weight: bold;font-size: 14px;display: none;">Successfully Commented.</span>
+            <%= f.text_area :body, :rows => 3, :cols => 30, :placeholder => "Enter notes", :id => "body_text_#{line_item.id}" %>
+            <%= f.submit "Comment" %>
+          <% end %>
+        </li>
+        <script>
+          var pieData = [
+            {
+              value: <%= line_item.product.non_profit_percentage %>,
+              color: "#FFA12E"
+            },
+            {
+              value: <%= 100 - line_item.product.non_profit_percentage %>,
+              color: "#00A6D7"
+            }
+
+          ];
+          var myPie = new Chart(document.getElementById("canvas_<%= line_item.id %>").getContext("2d")).Pie(pieData);
+        </script>
+      </ul>
+    </div>
+  <% end %>
+<% else %>
+  <div style="margin-left: 90px;text-align:center">
+    <%= image_tag("/assets/cart.png") %>
+  </div>
+<% end %>
+<div class="clearFix"></div>
