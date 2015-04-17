@@ -79,7 +79,7 @@ Enods::Application.configure do
     :port                 => 587,
     #:domain               => 'baci.lindsaar.net',
     :user_name            => 'indiancraftstudios@gmail.com',
-    :password             => 'indiancraftstudios@123',
+    :password             => 'indiancraftstudios@!@#',
     :authentication       => 'plain',
     :enable_starttls_auto => true
   }
