@@ -78,8 +78,8 @@ Enods::Application.configure do
     :address              => "smtp.gmail.com",
     :port                 => 587,
     #:domain               => 'baci.lindsaar.net',
-    :user_name            => 'indiancraftstudios@gmail.com',
-    :password             => 'indiancraftstudios@!@#',
+    :user_name            => 'oe.member1@gmail.com',
+    :password             => '0nlineeduc@ti0n',
     :authentication       => 'plain',
     :enable_starttls_auto => true
   }
