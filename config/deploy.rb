@@ -1,34 +1,37 @@
-#require 'capistrano/ext/multistage'
-#require 'bundler/capistrano'
-#require 'rvm/capistrano'
+#deploy.rb
+set :stages, %w(production)
+set :default_stage, "production"
+require 'capistrano/ext/multistage'
+require 'bundler/capistrano'
 
-set :application, "/var/www/enods.com/public_html"
-set :repository,  "git@github.com:neeraji2it/enods.git"
-set :git_enable_submodules, 1 # if you have vendored rails
+role (:web) {"#{domain}"}
+role (:app) {"#{domain}"}
+role (:db) { ["#{domain}", {:primary => true}] }
+
+# Set the deploy branch to the current branch
+set :application, "indian craft studio"
 set :scm, :git
-set :use_sudo, false
-ssh_options[:keys] = ["/home/ashok/.ssh/enod_key123.pem"]
-set :user, 'ubuntu'
-set :scm_verbose, true
-default_run_options[:pty] = true 
-# roles (servers)
-role :web, '54.214.252.107'
-role :app, '54.214.252.107'
-role :db,  '54.214.252.107', :primary => true
+set (:repository) { "#{gitrepo}" }
+set (:deploy_to) { "#{deploydir}" }
+set :scm_user, "neeraj"
+set :keep_releases, 3
+ssh_options[:forward_agent] = true
+default_run_options[:pty] = true
 
-# deploy config
-set :deploy_to, application
-#set :deploy_via, :export
- 
-desc "Link to the configuration"
-task :symlink do
+desc "Symlinks database.yml, mailer.yml file from shared directory into the latest release"
+task :symlink_shared, :roles => [:app, :db] do
   run "ln -s #{shared_path}/config/database.yml #{latest_release}/config/database.yml"
-  #run "ln -s #{shared_path}/public/uploaded_files #{latest_release}/public/uploaded_files"
-
+  run "ln -s #{shared_path}/system #{latest_release}/system"
 end
-after "deploy:update_code", :symlink
- 
-#after 'deploy:finalize_update', :symlink_shared
+
+after 'deploy:finalize_update', 'deploy:cleanup', :symlink_shared
+
+namespace :deploy do
+  desc "Reload the database with seed data"
+  task :seed do
+    run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=#{rails_env}"
+  end
+end
 
 namespace :deploy do
   desc "Restart Application"
