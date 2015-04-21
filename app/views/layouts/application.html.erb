@@ -61,7 +61,7 @@
               <li class="icon-invitations <%= (params[:controller] == 'invitations' and params[:action] == 'index') ? 'active' : "" %>"><%= link_to "Invitations", invitations_path %></li>
             <% elsif current_user.role == 'admin' %>
               <li class="icon-dashboard <%= (params[:controller] == 'admins' and params[:action] == 'admin_dashboard') ? 'active' : "" %>"><%= link_to "Dashboard", admin_dashboard_path %></li>
-              <!-- <li class="icon-productsManagement <%#= (params[:controller] == 'admins' and params[:action] == 'seller') ? 'active' : "" %>"><%#= link_to "Seller Management", seller_admins_path() %></li> -->
+              <li class="icon-productsManagement <%= (params[:controller] == 'admins' and params[:action] == 'seller') ? 'active' : "" %>"><%= link_to "Product Management", products_admins_path() %></li>
               <!-- <li class="icon-nonProfitManagement <%#= (params[:controller] == 'admins' and params[:action] == 'non_profit') ? 'active' : "" %>"><%#= link_to "Non-Profit Management", non_profit_admins_path() %></li> -->
               <li class="icon-orderSalesManagement <%= (params[:controller] == 'admins' and params[:action] == 'sales') ? 'active' : "" %>"><%= link_to "Sales Management", sales_admins_path %></li>
               <li class="icon-userManagement <%= (params[:controller] == 'admins' and params[:action] == 'buyer') ? 'active' : "" %>"><%= link_to "User Management", buyer_admins_path() %></li>

@@ -1,10 +1,9 @@
 class ProductsController < ApplicationController
   before_filter :is_signin?, :only => ['index','new','create','preview_product','review','product_review']
-  before_filter :is_seller? , :only => ['new','create','import','upload_products']
   before_filter :is_valid_account? , :only => ['index','new','create']
 
   def index
-    @products = Product.where("user_id = #{current_user.id}").order('product_count DESC').paginate :page => params[:product_page], :per_page => 10 if (user_signed_in? and current_user.role == 'seller')
+    @products = Product.where("user_id = #{current_user.id}").order('product_count DESC').paginate :page => params[:product_page], :per_page => 10 if (user_signed_in? and (current_user.role == 'seller' || current_user.role == 'admin'))
   end
   
   def import
@@ -118,8 +117,8 @@ class ProductsController < ApplicationController
     if @product.update_attributes(params[:product])
       @product.update_attribute(:color, 'Modify')
       flash[:success] = "Successfully updated the Product."
-      redirect_to products_path if current_user.role == 'seller'
-      redirect_to products_admins_path if current_user.role == 'admin'
+      redirect_to products_path if(current_user.role == 'seller' || current_user.role == 'admin')
+     # redirect_to products_admins_path if current_user.role == 'admin'
     else
       flash[:error] = "Fail to update product"
       render :action => 'edit'

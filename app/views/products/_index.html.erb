@@ -1,4 +1,5 @@
-<h1 class="icon-productsManagement"><em class="icon-plus"><%= (user_signed_in? and current_user.role == 'seller') ? (link_to "New Product", new_product_path) : "" %></em><span>Product Mangement</span></h1>
+<h1 class="icon-productsManagement"><em class="icon-plus"><%= (user_signed_in? and (current_user.role == 'seller' || current_user.role == 'admin')) ? (link_to "New Product", new_product_path) : "" %></em><span>Product Mangement</span></h1>
+
 <div class="tablebox table-orderHistory">
   <div class="row">
     <div class="column">ID</div>
@@ -10,6 +11,7 @@
     <div class="column">Status</div>
     <div class="column last">Actions</div>
   </div>
+  
   <% @products.each_with_index do |product,index| %>
     <div class="row">
       <div class="column"><%= index+1 %></div>
