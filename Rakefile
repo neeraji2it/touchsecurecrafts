@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Enods::Application.load_tasks
+ICS::Application.load_tasks
