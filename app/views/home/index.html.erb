@@ -71,21 +71,7 @@
       </div>
       <div class="column-share">Find us on:</div>
       <ul class="list-media">
-        <li class="icon-twitter">
-          <%= link_to "twitter", "https://twitter.com/enodsnow", :title => "twitter" %>
-        </li>
-        <li class="icon-facebook">
-          <%= link_to "facebook", "https://www.facebook.com/enodsnow", :title => "facebook" %>
-        </li>
-        <li class="icon-googlePlus">
-          <%= link_to "google plus", "https://google.com/+enods" , :title => "google plus" %>
-        </li>
-        <li class="icon-pinterest">
-          <%= link_to "pinterest", "http://www.pinterest.com/enodsnow", :title => "pinterest" %>
-        </li>
-        <li class="icon-youtube">
-          <%= link_to "you tube", "https://www.youtube.com/user/enodsnow", :title => "you tube" %>
-        </li>
+        <%= render 'layouts/social' %>
       </ul>
     </div>
   </div>
