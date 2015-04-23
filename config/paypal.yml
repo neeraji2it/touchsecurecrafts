@@ -9,12 +9,12 @@ development: &default
 
   # Credentials for Classic APIs
   app_id: APP-80W284485P519543T
-  username: info-facilitator_api1.enods.com
+  username: info-facilitator_api1.indiancraftstudio.com
   password: 1396326439
   signature: AbLwns5UlYm10QdjuZTVDLzbZhqsASNwAcjqYbmGh4LWOVFXkBzj4NNF
   # # With Certificate
   # cert_path: "config/cert_key.pem"
-  sandbox_email_address: info-facilitator@enods.com
+  sandbox_email_address: info-facilitator@indiancraftstudio.com
 
   # # IP Address
   # ip_address: 127.0.0.1
@@ -34,12 +34,12 @@ production: &default
 
   # Credentials for Classic APIs
   app_id: APP-80W284485P519543T
-  username: info_api1.enods.com
+  username: info_api1.indiancraftstudio.com
   password: QH2X8ZGUXMEJ5EXZ
   signature: AGo2bx2IeN.dKWbsZz231Il1tHBKAHDvklc1o.j67ngWlpXWIKFNIaKQ
   # # With Certificate
   # cert_path: "config/cert_key.pem"
-  sandbox_email_address: info@enods.com
+  sandbox_email_address: info@indiancraftstudio.com
 
   # # IP Address
   # ip_address: 127.0.0.1
