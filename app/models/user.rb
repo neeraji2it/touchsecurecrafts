@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :email,:active, :password,:avatar,:image,:store_image, :password_confirmation,:role,:uid,:details,:secret, :remember_me,:first_name,:last_name,:username,:gender,:agree_terms,:provider,:token,:business_name, :business_address, :website_url, :city, :state, :country, :phone,:zip,:confirmation_token, :confirmed_at,:paypal_id,:other_info,:date_of_birth
   has_many :products, :dependent => :destroy
   has_many :favourites, :dependent => :destroy
-  has_many :invitations, :dependent => :destroy
+  #has_many :invitations, :dependent => :destroy
   has_many :cause_fans, :dependent => :destroy
   has_many :received_contacts, :class_name => 'ContactShopOwner', :foreign_key => :receiver_id, :dependent => :destroy
   has_one :billing_shipping_address, :dependent => :destroy
@@ -44,6 +44,12 @@ class User < ActiveRecord::Base
   #      end
   #    end
   #  end
+  before_create :send_admin?
+
+  #when user created notification goes to Admin.
+  def send_admin?
+    UserMailer.send_request(self).deliver
+  end
   
   def buyer?
     !self.role.nil? and ['buyer'].include?(self.role)

@@ -11,6 +11,12 @@ class UserMailer < ActionMailer::Base
     @product = product
     mail(:to => email.email, :subject => product.title)
   end
+
+  #New user registered information to Admin
+  def send_request(user)
+    @user = user
+    mail(:to => ADMIN_MAIL, :subject => 'New User Registered')
+  end
   
   def contact(contact)
     @contact = contact
