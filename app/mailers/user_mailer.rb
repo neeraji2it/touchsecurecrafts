@@ -3,7 +3,7 @@ class UserMailer < ActionMailer::Base
 
   def alert(user)
     @user = user
-    mail(:to => ['indiancraftstudio@gmail.com'], :subject => "Subscribed")
+    mail(:to => [ADMIN_MAIL], :subject => "Subscribed")
   end
   
   def project_alert(email,product)
@@ -14,7 +14,7 @@ class UserMailer < ActionMailer::Base
   
   def contact(contact)
     @contact = contact
-    mail(:to => 'indiancraftstudio@gmail.com', :reply_to => contact.email, :subject => contact.option)
+    mail(:to => ADMIN_MAIL, :reply_to => contact.email, :subject => contact.option)
   end
   
   def contact_shop(contact_shop)
@@ -25,7 +25,7 @@ class UserMailer < ActionMailer::Base
   def invitation(user,invitation)
     @invitation = invitation
     @user = user
-    mail(:to => 'indiancraftstudio@gmail.com', :subject => "Invitaiton from indiancraftstudio.com")
+    mail(:to => @invitation.email, :subject => "Invitaiton from indiancraftstudio.com")
   end
   
   def vendor_status(seller)
