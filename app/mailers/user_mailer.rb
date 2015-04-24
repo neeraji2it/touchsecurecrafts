@@ -25,7 +25,7 @@ class UserMailer < ActionMailer::Base
   def invitation(user,invitation)
     @invitation = invitation
     @user = user
-    mail(:to => 'ashok@dine-media.com', :subject => "Invitaiton from indiancraftstudio.com")
+    mail(:to => 'indiancraftstudio@gmail.com', :subject => "Invitaiton from indiancraftstudio.com")
   end
   
   def vendor_status(seller)
