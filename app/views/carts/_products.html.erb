@@ -1,6 +1,6 @@
 <div>
   <h4><%= product.title.truncate(60, separator: ' ') %></h4>
-  <p>Seller: <%= link_to product.sell_name.present? ? product.sell_name.truncate(20, separator: ' ') : product.user.username.truncate(20, separator: ' '), seller_path(product.user.id) %></p>
+  <p>Seller: <%= link_to product.sell_name.present? ? product.sell_name.truncate(22) : product.user.username.truncate(22), seller_path(product.user.id) %></p>
   <span><%= number_to_currency(product.price) %></span>
   <div class="offer"><%= product.non_profit_percentage %><%= "%" %></div>
 </div>
