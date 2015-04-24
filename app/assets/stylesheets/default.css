@@ -688,7 +688,7 @@ input[type=submit].btn-proceedCheckout{
 .list_carousel [id*="caroulproduct"] li .offer{
     position:absolute;
     right: -35px;
-    top: -37px;
+    top: 24px;
     color:#FFF;
     width:50px;
     height:50px;
