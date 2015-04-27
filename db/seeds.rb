@@ -15,7 +15,7 @@ if Category.count == 0
   Category.create(:id => 1, :name => 'Jewellery')
   Category.create(:id => 2, :name => 'Clothing')
   Category.create(:id => 3, :name => 'Home Alliance')
-  Category.create(:id => 4, :name => "Men's Footwear")
+  Category.create(:id => 4, :name => "Footwear")
   Category.create(:id => 5, :name => 'Accessories')
   Category.create(:id => 6, :name => 'Gift')
   
@@ -48,20 +48,20 @@ if Category.count == 0
   Category.create(:id => 30, :name => 'Kids', :parent_id => 2)
 
   #Home Alliance
-  Category.create(:id => 31, :name => 'Home decor', :parent_id => 3)
-  Category.create(:id => 32, :name => 'FURNISHINGS', :parent_id => 3)
-  Category.create(:id => 33, :name => 'HOME IMPROVEMENT', :parent_id => 3)
-  Category.create(:id => 34, :name => 'KITCHEN & DINING', :parent_id => 3)
+  Category.create(:id => 31, :name => 'Home Decore', :parent_id => 3)
+  Category.create(:id => 32, :name => 'Furnishings', :parent_id => 3)
+  Category.create(:id => 33, :name => 'Home Improvements', :parent_id => 3)
+  Category.create(:id => 34, :name => 'Kitchen & Dinnings', :parent_id => 3)
 
   #Men's Footwear
-  Category.create(:id => 35, :name => "MEN'S FOOTWEAR", :parent_id => 4)
-  Category.create(:id => 36, :name => "WOMEN'S FOOTWEAR", :parent_id => 4)
+  Category.create(:id => 35, :name => "Men's Footwear", :parent_id => 4)
+  Category.create(:id => 36, :name => "Women's Footwear", :parent_id => 4)
   
 
   #Accessories
-  Category.create(:id => 37, :name => 'WOMEN', :parent_id => 5)
+  Category.create(:id => 37, :name => 'Women', :parent_id => 5)
   Category.create(:id => 38, :name => 'Men', :parent_id => 5)
-  Category.create(:id => 39, :name => 'TRAVEL & LUGGAGE', :parent_id => 5)
+  Category.create(:id => 39, :name => 'Travel & Luggage', :parent_id => 5)
 
 
   #Gift
