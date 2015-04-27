@@ -243,9 +243,7 @@ if Category.count == 0
   SubSubCategory.create(:id => 137, :name => 'Mugs', :sub_category_id => 36)
   SubSubCategory.create(:id => 138, :name => 'Personalised Combos', :sub_category_id => 36)
   SubSubCategory.create(:id => 139, :name => 'Photo Frames', :sub_category_id => 36)
-
-
-  
+ 
   #Gift, Soft Toys
   SubSubCategory.create(:id => 140, :name => 'Teddy Bears', :sub_category_id => 37)
   SubSubCategory.create(:id => 141, :name => 'Heart Cushions', :sub_category_id => 37)
