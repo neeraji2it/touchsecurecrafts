@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140520073043) do
+ActiveRecord::Schema.define(:version => 20150427091324) do
 
   create_table "banner_images", :force => true do |t|
     t.string   "image_file_name"
@@ -225,6 +225,8 @@ ActiveRecord::Schema.define(:version => 20140520073043) do
     t.text     "reject_message"
     t.boolean  "product_ability"
     t.integer  "promotion_code_id"
+    t.integer  "sub_category_id"
+    t.integer  "sub_sub_category_id"
   end
 
   create_table "promotion_codes", :force => true do |t|
@@ -264,6 +266,21 @@ ActiveRecord::Schema.define(:version => 20140520073043) do
     t.string   "item_cost"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "sub_categories", :force => true do |t|
+    t.integer  "category_id"
+    t.string   "name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "sub_sub_categories", :force => true do |t|
+    t.integer  "category_id"
+    t.integer  "sub_category_id"
+    t.string   "name"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "users", :force => true do |t|
