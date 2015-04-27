@@ -296,4 +296,198 @@ if Category.count == 0
   Category.create(:id => 225, :name => 'Rakhi - 10 Aug ', :parent_id => 45)
   Category.create(:id => 226, :name => 'Friendship Day', :parent_id => 45)
   Category.create(:id => 227, :name => 'Fathers Day', :parent_id => 45)
+
+  #Jwewllery sub-sub-cats Gold
+    Category.create(:id => 228, :name => 'Earrings', :parent_id => 7)
+    Category.create(:id => 229, :name => 'Rings', :parent_id => 7)
+    Category.create(:id => 230, :name => 'Pendants', :parent_id => 7)
+    Category.create(:id => 231, :name => 'Mangalsutras', :parent_id => 7)
+    Category.create(:id => 232, :name => 'Nose pins', :parent_id => 7)
+    Category.create(:id => 233, :name => 'Chains', :parent_id => 7)
+    Category.create(:id => 234, :name => 'Alphabet Pendants', :parent_id => 7)
+
+  #Jwewllery sub-sub-cats Silver Jewelry  
+    Category.create(:id => 235, :name => 'Earrings', :parent_id => 8)
+    Category.create(:id => 236, :name => 'Rings', :parent_id => 8)
+    Category.create(:id => 237, :name => 'Pendants', :parent_id => 8)
+    Category.create(:id => 238, :name => 'Mangalsutras', :parent_id => 8)
+    Category.create(:id => 239, :name => 'Nose pins', :parent_id => 8)
+    Category.create(:id => 240, :name => 'Chains', :parent_id => 8)
+    Category.create(:id => 241, :name => 'Alphabet Pendants', :parent_id => 8)
+
+  #Jwewllery sub-sub-cats Birthday Jewelry 
+    Category.create(:id => 242, :name => 'Earrings', :parent_id => 9)
+    Category.create(:id => 243, :name => 'Rings', :parent_id => 9)
+    Category.create(:id => 244, :name => 'Pendants', :parent_id => 9)
+    Category.create(:id => 245, :name => 'Mangalsutras', :parent_id => 9)
+    Category.create(:id => 246, :name => 'Nose pins', :parent_id => 9)
+    Category.create(:id => 247, :name => 'Chains', :parent_id => 9)
+    Category.create(:id => 248, :name => 'Alphabet Pendants', :parent_id => 9)
+
+#Jwewllery sub-sub-cats Antique Jewelry
+    Category.create(:id => 249, :name => 'Earrings', :parent_id => 10)
+    Category.create(:id => 250, :name => 'Rings', :parent_id => 10)
+    Category.create(:id => 251, :name => 'Pendants', :parent_id => 10)
+    Category.create(:id => 252, :name => 'Mangalsutras', :parent_id => 10)
+    Category.create(:id => 253, :name => 'Nose pins', :parent_id => 10)
+    Category.create(:id => 254, :name => 'Chains', :parent_id => 10)
+    Category.create(:id => 255, :name => 'Alphabet Pendants', :parent_id => 10)
+
+#Jwewllery sub-sub-cats Bead Jewelry
+    Category.create(:id => 256, :name => 'Earrings', :parent_id => 11)
+    Category.create(:id => 257, :name => 'Rings', :parent_id => 11)
+    Category.create(:id => 258, :name => 'Pendants', :parent_id => 11)
+    Category.create(:id => 259, :name => 'Mangalsutras', :parent_id => 11)
+    Category.create(:id => 260, :name => 'Nose pins', :parent_id => 11)
+    Category.create(:id => 261, :name => 'Chains', :parent_id => 11)
+    Category.create(:id => 262, :name => 'Alphabet Pendants', :parent_id => 11)
+
+ #Jwewllery sub-sub-cats Bridal Jewelry
+    Category.create(:id => 263, :name => 'Earrings', :parent_id => 12)
+    Category.create(:id => 264, :name => 'Rings', :parent_id => 12)
+    Category.create(:id => 265, :name => 'Pendants', :parent_id => 12)
+    Category.create(:id => 266, :name => 'Mangalsutras', :parent_id => 12)
+    Category.create(:id => 267, :name => 'Nose pins', :parent_id => 12)
+    Category.create(:id => 268, :name => 'Chains', :parent_id => 12)
+    Category.create(:id => 269, :name => 'Alphabet Pendants', :parent_id => 12)
+
+#Jwewllery sub-sub-cats Custom Jewellery
+    Category.create(:id => 270, :name => 'Earrings', :parent_id => 13)
+    Category.create(:id => 271, :name => 'Rings', :parent_id => 13)
+    Category.create(:id => 272, :name => 'Pendants', :parent_id => 13)
+    Category.create(:id => 273, :name => 'Mangalsutras', :parent_id => 13)
+    Category.create(:id => 274, :name => 'Nose pins', :parent_id => 13)
+    Category.create(:id => 275, :name => 'Chains', :parent_id => 13)
+    Category.create(:id => 276, :name => 'Alphabet Pendants', :parent_id => 13)
+
+#Jwewllery sub-sub-cats Fashion Jewellery
+    Category.create(:id => 277, :name => 'Earrings', :parent_id => 14)
+    Category.create(:id => 278, :name => 'Rings', :parent_id => 14)
+    Category.create(:id => 279, :name => 'Pendants', :parent_id => 14)
+    Category.create(:id => 280, :name => 'Mangalsutras', :parent_id => 14)
+    Category.create(:id => 281, :name => 'Nose pins', :parent_id => 14)
+    Category.create(:id => 282, :name => 'Chains', :parent_id => 14)
+    Category.create(:id => 283, :name => 'Alphabet Pendants', :parent_id => 14)
+
+#Jwewllery sub-sub-cats Filigree Jewellery
+    Category.create(:id => 284, :name => 'Earrings', :parent_id => 15)
+    Category.create(:id => 285, :name => 'Rings', :parent_id => 15)
+    Category.create(:id => 286, :name => 'Pendants', :parent_id => 15)
+    Category.create(:id => 287, :name => 'Mangalsutras', :parent_id => 15)
+    Category.create(:id => 288, :name => 'Nose pins', :parent_id => 15)
+    Category.create(:id => 289, :name => 'Chains', :parent_id => 15)
+    Category.create(:id => 290, :name => 'Alphabet Pendants', :parent_id => 15)    
+
+#Jwewllery sub-sub-cats Gold Jewellery
+    Category.create(:id => 291, :name => 'Earrings', :parent_id => 16)
+    Category.create(:id => 292, :name => 'Rings', :parent_id => 16)
+    Category.create(:id => 293, :name => 'Pendants', :parent_id => 16)
+    Category.create(:id => 294, :name => 'Mangalsutras', :parent_id => 16)
+    Category.create(:id => 295, :name => 'Nose pins', :parent_id => 16)
+    Category.create(:id => 296, :name => 'Chains', :parent_id => 16)
+    Category.create(:id => 297, :name => 'Alphabet Pendants', :parent_id => 16)
+
+#Jwewllery sub-sub-cats Handmade Jewellery
+    Category.create(:id => 298, :name => 'Earrings', :parent_id => 17)
+    Category.create(:id => 299, :name => 'Rings', :parent_id => 17)
+    Category.create(:id => 300, :name => 'Pendants', :parent_id => 17)
+    Category.create(:id => 301, :name => 'Mangalsutras', :parent_id => 17)
+    Category.create(:id => 302, :name => 'Nose pins', :parent_id => 17)
+    Category.create(:id => 303, :name => 'Chains', :parent_id => 17)
+    Category.create(:id => 304, :name => 'Alphabet Pendants', :parent_id => 17)
+
+
+#Jwewllery sub-sub-cats Ivory Jewellery
+    Category.create(:id => 305, :name => 'Earrings', :parent_id => 18)
+    Category.create(:id => 306, :name => 'Rings', :parent_id => 18)
+    Category.create(:id => 307, :name => 'Pendants', :parent_id => 18)
+    Category.create(:id => 308, :name => 'Mangalsutras', :parent_id => 18)
+    Category.create(:id => 309, :name => 'Nose pins', :parent_id => 18)
+    Category.create(:id => 310, :name => 'Chains', :parent_id => 18)
+    Category.create(:id => 311, :name => 'Alphabet Pendants', :parent_id => 18)
+
+
+#Jwewllery sub-sub-cats Jadau Jewellery
+    Category.create(:id => 312, :name => 'Earrings', :parent_id => 19)
+    Category.create(:id => 313, :name => 'Rings', :parent_id => 19)
+    Category.create(:id => 314, :name => 'Pendants', :parent_id => 19)
+    Category.create(:id => 315, :name => 'Mangalsutras', :parent_id => 19)
+    Category.create(:id => 316, :name => 'Nose pins', :parent_id => 19)
+    Category.create(:id => 317, :name => 'Chains', :parent_id => 19)
+    Category.create(:id => 318, :name => 'Alphabet Pendants', :parent_id => 19)
+
+
+#Jwewllery sub-sub-cats Kundan Jewellery
+    Category.create(:id => 319, :name => 'Earrings', :parent_id =>20 )
+    Category.create(:id => 320, :name => 'Rings', :parent_id => 20)
+    Category.create(:id => 321, :name => 'Pendants', :parent_id => 20)
+    Category.create(:id => 322, :name => 'Mangalsutras', :parent_id => 20)
+    Category.create(:id => 323, :name => 'Nose pins', :parent_id => 20)
+    Category.create(:id => 324, :name => 'Chains', :parent_id => 20)
+    Category.create(:id => 325, :name => 'Alphabet Pendants', :parent_id => 20)
+
+
+#Jwewllery sub-sub-cats Lac Jewellery
+    Category.create(:id => 326, :name => 'Earrings', :parent_id => 21)
+    Category.create(:id => 327, :name => 'Rings', :parent_id => 21)
+    Category.create(:id => 328, :name => 'Pendants', :parent_id => 21)
+    Category.create(:id => 329, :name => 'Mangalsutras', :parent_id => 21)
+    Category.create(:id => 330, :name => 'Nose pins', :parent_id => 21)
+    Category.create(:id => 331, :name => 'Chains', :parent_id => 21)
+    Category.create(:id => 332, :name => 'Alphabet Pendants', :parent_id => 21)
+
+
+#Jwewllery sub-sub-cats Meenakari Jewellery
+    Category.create(:id => 333, :name => 'Earrings', :parent_id => 22)
+    Category.create(:id => 334, :name => 'Rings', :parent_id => 22)
+    Category.create(:id => 335, :name => 'Pendants', :parent_id => 22)
+    Category.create(:id => 336, :name => 'Mangalsutras', :parent_id => 22)
+    Category.create(:id => 337, :name => 'Nose pins', :parent_id => 22)
+    Category.create(:id => 338, :name => 'Chains', :parent_id => 22)
+    Category.create(:id => 339, :name => 'Alphabet Pendants', :parent_id => 22)                    
+
+#Jwewllery sub-sub-cats Navratna Jewellery
+    Category.create(:id => 340, :name => 'Earrings', :parent_id => 23)
+    Category.create(:id => 341, :name => 'Rings', :parent_id => 23)
+    Category.create(:id => 342, :name => 'Pendants', :parent_id => 23)
+    Category.create(:id => 343, :name => 'Mangalsutras', :parent_id => 23)
+    Category.create(:id => 344, :name => 'Nose pins', :parent_id => 23)
+    Category.create(:id => 345, :name => 'Chains', :parent_id => 23)
+    Category.create(:id => 346, :name => 'Alphabet Pendants', :parent_id => 23)   
+
+#Jwewllery sub-sub-cats Pachchikam Jewellery
+    Category.create(:id => 347, :name => 'Earrings', :parent_id => 24)
+    Category.create(:id => 348, :name => 'Rings', :parent_id => 24)
+    Category.create(:id => 349, :name => 'Pendants', :parent_id => 24)
+    Category.create(:id => 350, :name => 'Mangalsutras', :parent_id => 24)
+    Category.create(:id => 351, :name => 'Nose pins', :parent_id => 24)
+    Category.create(:id => 352, :name => 'Chains', :parent_id => 24)
+    Category.create(:id => 353, :name => 'Alphabet Pendants', :parent_id => 24)   
+
+#Jwewllery sub-sub-cats Stone Jewellery
+    Category.create(:id => 354, :name => 'Earrings', :parent_id => 25)
+    Category.create(:id => 355, :name => 'Rings', :parent_id => 25)
+    Category.create(:id => 356, :name => 'Pendants', :parent_id => 25)
+    Category.create(:id => 357, :name => 'Mangalsutras', :parent_id => 25)
+    Category.create(:id => 358, :name => 'Nose pins', :parent_id => 25)
+    Category.create(:id => 359, :name => 'Chains', :parent_id => 25)
+    Category.create(:id => 360, :name => 'Alphabet Pendants', :parent_id => 25)   
+
+#Jwewllery sub-sub-cats Temple Jewellery
+    Category.create(:id => 361, :name => 'Earrings', :parent_id => 26)
+    Category.create(:id => 362, :name => 'Rings', :parent_id => 26)
+    Category.create(:id => 363, :name => 'Pendants', :parent_id => 26)
+    Category.create(:id => 364, :name => 'Mangalsutras', :parent_id => 26)
+    Category.create(:id => 365, :name => 'Nose pins', :parent_id => 26)
+    Category.create(:id => 366, :name => 'Chains', :parent_id => 26)
+    Category.create(:id => 367, :name => 'Alphabet Pendants', :parent_id => 26)   
+
+#Jwewllery sub-sub-cats Tribal Jewellery
+    Category.create(:id => 368, :name => 'Earrings', :parent_id => 27)
+    Category.create(:id => 369, :name => 'Rings', :parent_id => 27)
+    Category.create(:id => 370, :name => 'Pendants', :parent_id => 27)
+    Category.create(:id => 371, :name => 'Mangalsutras', :parent_id => 27)
+    Category.create(:id => 372, :name => 'Nose pins', :parent_id => 27)
+    Category.create(:id => 373, :name => 'Chains', :parent_id => 27)
+    Category.create(:id => 374, :name => 'Alphabet Pendants', :parent_id => 27)                   
 end
