@@ -10,10 +10,11 @@
   </div>
   <% if params[:categories] %>
     <ul style="border: 1px solid gray; position: relative; width: 70%; left: 255px;">
-      <% Category.where("parent_id = #{params[:categories]}").each do |category| %>
+      <% SubCategory.where("category_id = #{params[:categories]}").each do |category| %>
         <li style="width: 200px; display: inline; position: relative; left: -200px;font-size: 16px;"><%= link_to category.name, category_path(:categories => category.id) %></li>&nbsp;&nbsp;&nbsp;&nbsp;
       <% end %>
     </ul>
+     
     <div style="position: relative; top: 10px; font-weight: bold; font-size: 15px;float: left; left: 30px;">
       <% categories = [] %>
       <% c = Category.find(params[:categories]) %>
