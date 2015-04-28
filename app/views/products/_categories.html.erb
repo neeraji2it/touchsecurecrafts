@@ -1,2 +1,2 @@
-Sub-Category: <%= select_tag 'category_id', options_for_select(Category.where("parent_id = #{params[:id]}").map{|a| [a.name, a.id]}), :onchange => "select_sub_category(this.value)" %>
+Sub-Category: <%= select_tag 'sub_category_id', options_for_select(SubCategory.where(category_id: params[:id]).map{|a| [a.name, a.id]}), :onchange => "select_sub_category(#{params[:id]}, this.value)" %>
 <div id="sub_category"></div>

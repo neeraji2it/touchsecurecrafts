@@ -39,9 +39,13 @@ $(function() {
     });
 });
 
-function select_sub_category(val) {
+function select_sub_category(cat_id, sub_cat_id) {
     $.ajax({
-        url: '/products/sub_categories?category_id=' + val
+        url: '/products/sub_categories',
+        data: {
+            category_id: cat_id,
+            sub_category_id: sub_cat_id
+        }
     });
 }
 

@@ -27,14 +27,17 @@ class ProductsController < ApplicationController
   end
   
   def categories
-    @categores = Category.where("parent_id = #{params[:id]}")
+    @categores = SubCategory.where("category_id = #{params[:id]}")
     respond_to do |format|
       format.js
     end
   end
   
   def sub_categories
-    @sub_categores = Category.where("parent_id = #{params[:category_id]}")
+    p "*********************************"
+    p params[:sub_category_id]
+    @sub_categories = SubSubCategory.where(sub_category_id: params[:sub_category_id])
+    p "*********************************"
     puts @sub_categores.inspect
     respond_to do |format|
       format.js
