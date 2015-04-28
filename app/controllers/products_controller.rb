@@ -50,8 +50,8 @@ class ProductsController < ApplicationController
     @product.non_profit_cause = params[:non_profit_cause]
     @product.cause_id = params[:cause_id] if params[:cause_id].present?
     @product.category_id = params[:category_id] if params[:category_id].present?
-    @product.sub_category_id = params[:sub_category_id] if params[:sub_category_id]
-    @product.sub_sub_category_id = params[:sub_sub_category_id] if params[:sub_sub_category_id]
+    @product.sub_category_id = params[:sub_category_id] if params[:sub_category_id].present?
+    @product.sub_sub_category_id = params[:sub_sub_category_id] if params[:sub_sub_category_id].present?
     1.times { @product.images.build } if @product.images.blank?
     1.times { @product.colors.build } if @product.colors.blank?
     1.times {@product.shipping_products.build} if @product.shipping_products.blank?
