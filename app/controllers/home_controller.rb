@@ -7,8 +7,18 @@ class HomeController < ApplicationController
   end
 
   def category
-    conditions = !params[:categories].to_s.blank? ? "category_id = '#{params[:categories]}' and status = 'confirmed'" : "status = 'confirmed'"
-    @products = Product.find(:all, :conditions => [conditions])
+    if params[:categories].present?
+      @products = Product.where("category_id = ? and status = 'confirmed'", params[:categories])
+      #all subcats related to main cat
+      @sub_categories = SubCategory.where("category_id = #{params[:categories]}")
+    elsif params[:sub_cats].present?
+      @products = Product.where("sub_category_id = ? and status = 'confirmed'", params[:sub_cats])
+      @sub_sub_categories = SubSubCategory.where("sub_category_id=?", params[:sub_cats])
+    elsif params[:child].present?
+      @products = Product.where("sub_sub_category_id = ? and status = 'confirmed'", params[:child])
+    else
+      @products = Product.where("status = 'confirmed'")
+    end 
   end
 
   def create_alert
