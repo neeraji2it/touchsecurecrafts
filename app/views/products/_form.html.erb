@@ -31,7 +31,7 @@
       </div>
     </td>
   </tr>
-  <tr class="row">
+<!--   <tr class="row">
     <td>Fair Trade</td>
     <td><%= f.radio_button :fair_trade, "Yes" %>Yes
       <%= f.radio_button :fair_trade , "No"%>No</td>
@@ -40,7 +40,7 @@
     <td></td>
     <td>
       <%= f.check_box :product_ability %>Hide Product</td>
-  </tr>
+  </tr> -->
   <tr class="row">
     <td>Quantity</td>
     <td><%= f.text_field :qty %></td>
@@ -64,20 +64,20 @@
       </td>
     </tr>
   <% end %>
-  <tr class="row">
+<!--   <tr class="row">
     <td><%= f.label :non_profit_cause, "Select Cause Category:#{mark}".html_safe %></td>
     <td>
       <%= select_tag :non_profit_cause, options_for_select([["Select Cause Category",""], ["Animal Cause", 'Animal Cause'], ["Human Cause", "Human Cause"],["Enivronmental Cause","Environmental Cause"],["Any","Any"]], :selected => f.object.non_profit_cause), :onchange=>"cause_type(this.value)" %>
     </td>
-  </tr>
-  <tr class="row">
+  </tr> -->
+<!--   <tr class="row">
     <td><%= f.label :cause_id, "Support Cause:" %></td>
     <td>
       <div id="client-category">
         <%= select_tag :cause_id, options_for_select(["Select",""], :selected => f.object.cause_id) %>
       </div>
     </td>
-  </tr>
+  </tr> -->
   <tr class="row">
     <td><%= f.label :promotion_code_id, "Promotion Code:" %></td>
     <td>
@@ -86,10 +86,10 @@
       </div>
     </td>
   </tr>
-  <tr class="row">
+<!--   <tr class="row">
     <td><%= f.label :non_profit_percentage, "Percentage to Non-Profit:#{mark}".html_safe %></td>
     <td><%= f.text_field :non_profit_percentage %></td>
-  </tr>
+  </tr> -->
   <tr class="row">
     <td><%= f.label :description, "Description:#{mark}".html_safe %></td>
     <td><%= f.text_area :description, :cols => 33, :rows => 3 %></td>

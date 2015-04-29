@@ -108,25 +108,25 @@
               <span id='line_item_quantiy_<%= line_item.id %>'></span>
             </li>
             <li><%= number_to_currency(line_item.product.price) %> USD </li>
-            <li>Donation: <%= number_to_currency(((line_item.full_price.to_f)*(line_item.product.non_profit_percentage))/100) %> USD </li>
+            <!-- <li>Donation: <%#= number_to_currency(((line_item.full_price.to_f)*(line_item.product.non_profit_percentage))/100) %> USD </li> -->
           </ul>
         </li>
-        <li>
+<!--         <li>
           <div style="position: relative; left: -12px; width: 618px;">
             <div class="thum-productDetail" style="width: 78px;"><canvas id="canvas_<%= line_item.id %>" height="72" width="75"></canvas></div>
-            <p style="float: left; margin-top: 17px; width: 218px; margin-left: -2px;"><%= line_item.product.non_profit_percentage %><%= "%" %>  of the proceeds <br>will be donated.</p>
+            <p style="float: left; margin-top: 17px; width: 218px; margin-left: -2px;"><%#= line_item.product.non_profit_percentage %><%#= "%" %>  of the proceeds <br>will be donated.</p>
             <div class="thum-productDetail" style="width: 170px;">
-              <% if line_item.product.non_profit_cause == "Any" %>
-                <%= image_tag("/assets/icon-dog-foot.png", :width => 50, :height => 50) %>
-                <%= image_tag("/assets/icon-glob.png", :width => 50, :height => 50) %>
-                <%= image_tag("/assets/icon-heart.png", :width => 50, :height => 50) %>
-              <% else %>
-                <%= image_tag(line_item.product.non_profit_cause == 'Animal Cause' ? ("/assets/icon-dog-foot.png") : (line_item.product.non_profit_cause == 'Environmental Cause' ? ("/assets/icon-glob.png") : ("/assets/icon-heart.png")), :width => 72, :height => 74) %>
-              <% end %>
+              <% #if line_item.product.non_profit_cause == "Any" %>
+                <%#= image_tag("/assets/icon-dog-foot.png", :width => 50, :height => 50) %>
+                <%#= image_tag("/assets/icon-glob.png", :width => 50, :height => 50) %>
+                <%#= image_tag("/assets/icon-heart.png", :width => 50, :height => 50) %>
+              <%# else %>
+                <%#= image_tag(line_item.product.non_profit_cause == 'Animal Cause' ? ("/assets/icon-dog-foot.png") : (line_item.product.non_profit_cause == 'Environmental Cause' ? ("/assets/icon-glob.png") : ("/assets/icon-heart.png")), :width => 72, :height => 74) %>
+              <% #end %>
             </div><br />
-            <p style="width: 220px; position: relative; left: 210px;"><a title="The United Nations Children's Fund" href="#"><%= line_item.product.non_profit_cause.capitalize.split("_").join(" ") %></a></p>
+            <p style="width: 220px; position: relative; left: 210px;"><a title="The United Nations Children's Fund" href="#"><%#= line_item.product.non_profit_cause.capitalize.split("_").join(" ") %></a></p>
           </div>
-        </li>
+        </li> -->
         <li>
           <%= form_for @comment, :url => create_comment_product_path(line_item.product, :line_item_id => line_item.id), :method => 'POST', :remote => true do |f| %>
             <span id="error_comment_<%= line_item.id %>" style="color: red;font-weight: bold;font-size: 14px;display: none;">Body Con't be Blank</span>
@@ -135,20 +135,7 @@
             <%= f.submit "Comment" %>
           <% end %>
         </li>
-        <script>
-          var pieData = [
-            {
-              value: <%= line_item.product.non_profit_percentage %>,
-              color: "#FFA12E"
-            },
-            {
-              value: <%= 100 - line_item.product.non_profit_percentage %>,
-              color: "#00A6D7"
-            }
 
-          ];
-          var myPie = new Chart(document.getElementById("canvas_<%= line_item.id %>").getContext("2d")).Pie(pieData);
-        </script>
       </ul>
     </div>
   <% end %>
