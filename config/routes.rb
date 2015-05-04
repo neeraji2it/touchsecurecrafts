@@ -97,6 +97,8 @@ ICS::Application.routes.draw do
       get :non_profit_week
     end
   end
+
+  resources :contacts 
   
   match '/auth/:provider/callback' => 'omniauths#create'
   get '/favourites' => 'products#favourites', :as => :favourites
@@ -113,7 +115,7 @@ ICS::Application.routes.draw do
   get '/delivary_information' => 'home#delivary_information', :as => :delivary_information
   get '/privacy_policy' => 'home#privacy_policy', :as => :privacy_policy
   get '/terms_conditions' => 'home#terms_conditions', :as => :terms_conditions
-  get '/contact_us' => 'home#contact_us', :as => :contact_us
+  #get '/contact_us' => 'contacts#new', :as => :contact_us
   post '/contact' => 'home#contact', :as => :contact
   get '/shipping_returns' => 'home#shipping_returns', :as => :shipping_returns
   get '/secure_shopping' => 'home#secure_shopping', :as => :secure_shopping

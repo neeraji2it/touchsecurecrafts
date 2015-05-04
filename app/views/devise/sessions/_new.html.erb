@@ -1,11 +1,11 @@
 <div class="content" style="border-radius:10px;background-color:#fafafa;border:1px solid #898989;box-shadow:1px 1px 1px #d0d0d0 inset; ">
   <div class="loginColumn">
     <h4>First timer? Register now</h4>
-    <h5>Create unique products plus... </h5>
+    <h5>Benefits of creating an account</h5>
     <ul class="login-uniqueProduct">
-      <li><a href="#" title="Exclusive offers & sneak peeks">Exclusive offers & sneak peeks</a></li>
-      <li><a href="#" title="Instant order tracking">Instant order tracking</a></li>
-      <li><a href="#" title="Award-winning customer service">Award-winning customer service</a></li>
+      <li>Faster shopping</li>
+      <li>Instant order tracking</li>
+      <li>More options of products</li>
     </ul>
     <div class="login-register"><%= link_to "<input type='submit' title='Register' value='Register' />".html_safe, new_user_path(:role => 'buyer'), :style => 'text-decoration: none;' %></div>
   </div>
@@ -29,7 +29,7 @@
       </ul>
       <input class="fright" type="submit" title="Sign" value="Sign" />
     <% end %>
-    <p class="f12">By signing in you agree to the terms of the <a href="#" title="User Agreement">User Agreement</a> and <a title="Privacy Policy" href="#">Privacy Policy</a></p>
+    <p class="f12">By signing in you agree to the terms of the ><%= link_to "User Agreement", terms_conditions_path %> and <%= link_to "Privacy Policy", privacy_policy_path %></p>
   </div>
   <div class="clearFix"></div>
 </div>	
