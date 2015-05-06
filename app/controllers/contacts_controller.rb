@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-before_filter :is_signin?
+
   def new
     @contact = Contact.new
   end

@@ -8,7 +8,18 @@ class ProfilesController < ApplicationController
 
   def profile_update
     @user = User.find(params[:id])
-    if @user.update_attributes(params[:user])
+    @user.first_name = params[:user][:first_name]
+    @user.last_name = params[:user][:last_name]
+    @user.gender = params[:user][:gender]
+    @user.city = params[:user][:city]
+    @user.country = params[:user][:country]
+    @user.zip = params[:user][:zip]
+    @user.avatar = params[:user][:avatar]
+    @user.email = params[:user][:email]
+    @user.phone = params[:user][:phone]
+    @user.date_of_birth = params[:user][:date_of_birth]
+
+    if @user.save
       flash[:success] = "Successfully updated your profile."
       redirect_to profile_profile_path(@user)
     else

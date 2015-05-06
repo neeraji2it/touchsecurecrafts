@@ -19,11 +19,11 @@
   <% end %>
   <% if (@user.role == "buyer") %>
     <div class="frow">
-      <div><%= f.label :date_of_birth, "Date of Birth:#{mark}".html_safe %></div>
-      <div><%= f.text_field :date_of_birth, :value => (@user.date_of_birth ? @user.date_of_birth.strftime("%d-%m-%Y") : ""), :id => 'calendar' %></div>
+      <div><%= f.label :date_of_birth, "Date of Birth:".html_safe %></div>
+      <div><%= f.text_field :date_of_birth, :value => (@user.date_of_birth ? @user.date_of_birth.strftime("%d-%m-%Y") : ""), :id => 'calendar', :placeholder => "dd-mm-yyyy" %></div>
     </div>
     <%= render :partial => 'dates' %>
-    <div class="frow">
+    <div class="frow"> 
       <div><%= f.label :city, "City:#{mark}".html_safe %></div>
       <div><%= f.text_field :city %></div>
     </div>
