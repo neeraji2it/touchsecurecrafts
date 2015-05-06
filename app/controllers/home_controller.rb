@@ -73,6 +73,12 @@ class HomeController < ApplicationController
   def contact_us
     @contact = Contact.new
   end
+
+  def legal_disclaimer
+  end
+
+  def cancel_refund_policy
+  end
   
   def seller
     @user = User.find(params[:id])

@@ -122,6 +122,8 @@ ICS::Application.routes.draw do
   get '/how_it_works' => 'home#how_it_works', :as => :how_it_works
   get '/seller/:id' => 'home#seller', :as => :seller
   get '/sell' => 'home#sell', :as => :sell
+  get '/cancel_refund_policy' => 'home#cancel_refund_policy', :as => :cancel_refund_policy
+  get '/legal_disclaimer' => 'home#legal_disclaimer', :as => :legal_disclaimer
   get '/follow/:id' => "constants#follow", :as => :follow
   get '/favorite/:id' => "constants#favorite", :as => :favorite
 
