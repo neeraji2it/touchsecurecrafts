@@ -72,7 +72,7 @@ config.i18n.fallbacks = true
   #    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
   #  end
 
-  config.action_mailer.default_url_options = {:host => 'http://indiancraftstudio.com'}
+  config.action_mailer.default_url_options = {:host => 'http://handicraftstudios.com'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
@@ -88,4 +88,4 @@ config.i18n.fallbacks = true
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 end
-SITE = 'http://indiancraftstudio.com'
+SITE = 'http://handicraftstudios.com'
