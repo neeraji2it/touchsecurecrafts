@@ -19,8 +19,8 @@ class User < ActiveRecord::Base
   has_one :received_invitation, :class_name => 'Invitation', :primary_key => :email, :foreign_key => :email
   validates :username,:presence => true,:uniqueness => true
 
-  has_attached_file :avatar, :styles => {:thumb => '90*90>', :large => '900*900>'}, :default_url => "/assets/img-seller-infomation.jpg" if Rails.env == 'development'
-  has_attached_file :avatar,:whiny => false,:storage => :s3,:s3_credentials => "#{Rails.root}/config/s3.yml",:path => "uploaded_files/profile/:id/:style/:basename.:extension",:bucket => "ics-web",:styles => {:original => "900x900>",:default => "280x190>",:other => "96x96>"}, :default_url => "/assets/img-seller-infomation.jpg" if Rails.env == 'production'
+  has_attached_file :avatar, :styles => {:thumb => '90*90>', :large => '900*900>'}, :default_url => "/assets/img-seller-infomation.jpg"
+  #has_attached_file :avatar,:whiny => false,:storage => :s3,:s3_credentials => "#{Rails.root}/config/s3.yml",:path => "uploaded_files/profile/:id/:style/:basename.:extension",:bucket => "ics-web",:styles => {:original => "900x900>",:default => "280x190>",:other => "96x96>"}, :default_url => "/assets/img-seller-infomation.jpg" if Rails.env == 'production'
   has_attached_file :store_image, :styles => {:thumb => '90*90>', :large => '900*900>'}, :default_url => "/assets/img-dummy.jpg" if Rails.env == 'development'
   has_attached_file :store_image,:whiny => false,:storage => :s3,:s3_credentials => "#{Rails.root}/config/s3.yml",:path => "uploaded_files/profile/:id/:style/:basename.:extension",:bucket => "ics-web",:styles => {:original => "900x900>",:default => "280x190>",:other => "96x96>"}, :default_url => "/assets/img-dummy.jpg" if Rails.env == 'production'
   #validates :first_name,:last_name,:gender, :presence => true
