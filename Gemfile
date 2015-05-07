@@ -24,7 +24,7 @@ gem 'omniauth-linkedin'
 gem 'rvm-capistrano'
 gem 'capistrano-ext'
 gem 'execjs'
-gem 'therubyracer'
+gem 'therubyracer', :platforms => :ruby
 gem 'nokogiri'
 gem 'will_paginate', '>= 3.0.pre'
 gem 'paypal-sdk-adaptivepayments'
