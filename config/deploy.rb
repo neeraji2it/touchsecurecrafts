@@ -22,6 +22,7 @@ desc "Symlinks database.yml, mailer.yml file from shared directory into the late
 task :symlink_shared, :roles => [:app, :db] do
   run "ln -s #{shared_path}/config/database.yml #{latest_release}/config/database.yml"
   run "ln -s #{shared_path}/system #{latest_release}/system"
+  run "ln -s #{shared_path}/payments #{latest_release}/public/payments"
 end
 
 after 'deploy:finalize_update', 'deploy:cleanup', :symlink_shared
