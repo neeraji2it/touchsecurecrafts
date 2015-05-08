@@ -9,11 +9,11 @@ role (:app) {"#{domain}"}
 role (:db) { ["#{domain}", {:primary => true}] }
 
 # Set the deploy branch to the current branch
-set :application, "indian craft studio"
+set :application, "touch secure crafts"
 set :scm, :git
 set (:repository) { "#{gitrepo}" }
 set (:deploy_to) { "#{deploydir}" }
-set :scm_user, "neeraj"
+set :scm_user, "shivraj"
 set :keep_releases, 3
 ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
@@ -22,7 +22,6 @@ desc "Symlinks database.yml, mailer.yml file from shared directory into the late
 task :symlink_shared, :roles => [:app, :db] do
   run "ln -s #{shared_path}/config/database.yml #{latest_release}/config/database.yml"
   run "ln -s #{shared_path}/system #{latest_release}/system"
-  run "ln -s #{shared_path}/payments #{latest_release}/public/payments"
 end
 
 after 'deploy:finalize_update', 'deploy:cleanup', :symlink_shared
