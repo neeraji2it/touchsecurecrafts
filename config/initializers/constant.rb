@@ -1,5 +1,5 @@
 if Rails.env=='development'
-  ADMIN_MAIL='prasad.harshith@gmail.com'
+  ADMIN_MAIL='bhagat@dine-media.com'
 else
-  ADMIN_MAIL='indiancraftstudio@gmail.com'
+  ADMIN_MAIL='bhagat@dine-media.com'
 end
