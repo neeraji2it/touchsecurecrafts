@@ -1,0 +1,60 @@
+<div class="causesBox">
+  <h3>Creative Design work</h3>
+  <p>Touchsecurecrafts is a marketplace to "Discover Unique Hand crafted Products" including Handmade, Vintage, Ethnic, Organic,IT and Natural products. help a person redesign his home/living with the latest in handicrafts.
+<br><br>
+  </p>
+
+<div class="causesBox">
+  
+  <p>
+   
+    Fill out the  form below and we will be in touch with you shortly.
+  </p>
+  <%= form_for @creative, :url => creatives_path, :html => {:method => 'POST'}, :remote => true do |f| %>
+    <ul style="margin-left: -36px;width: 355px;padding: 0px 40px;">
+      <% @creative.errors.full_messages.each_with_index do |msg, index| %>
+        <li style="color: red;line-height: 20px;"><%= index+1 %>. <%= msg %></li>
+      <% end %>
+    </ul>
+    <table style='line-height: 60px;'>
+      <tr>
+        <td>Name:</td>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <td>Email:</td>
+        <td><%= f.email_field :email %></td>
+      </tr>
+       <tr>
+        <td>Phone:</td>
+        <td><%= f.text_field :phone %></td>
+      </tr>
+      <tr>
+        <td>Space:</td>
+        <td><%= f.select :space, %w(Office Home) %></td>
+      </tr>
+      <tr>
+        <td>budget:</td>
+        <td><%= f.text_field :budget %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= f.submit "Add Contact"  %></td>
+      </tr>
+    </table>
+  <% end %>
+</div>
+
+
+
+
+
+
+</div>
+
+<style>
+  .causesBox p{
+    font-size: 15px;
+    text-indent: 10px;
+  }
+</style>

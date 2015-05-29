@@ -1,4 +1,8 @@
 ICS::Application.routes.draw do
+  get "creatives/new"
+
+  get "creatives/index"
+
   devise_for :users, :controllers => {:sessions => 'sessions'}
 
 
@@ -99,7 +103,7 @@ ICS::Application.routes.draw do
   end
 
   resources :contacts 
-  
+  resources :creatives
   match '/auth/:provider/callback' => 'omniauths#create'
   get '/favourites' => 'products#favourites', :as => :favourites
   get '/category' => 'home#category', :as => :category
