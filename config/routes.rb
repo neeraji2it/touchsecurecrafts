@@ -1,8 +1,5 @@
 ICS::Application.routes.draw do
-  get "creatives/new"
-
-  get "creatives/index"
-
+ 
   devise_for :users, :controllers => {:sessions => 'sessions'}
 
 
