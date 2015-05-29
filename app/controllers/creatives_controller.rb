@@ -9,7 +9,7 @@ class CreativesController < ApplicationController
 
   def create
     @creative = Creative.new(params[:creative])
-    if @creative.save!
+    if @creative.save
       redirect_to root_path
     else
       render :action => 'new'
