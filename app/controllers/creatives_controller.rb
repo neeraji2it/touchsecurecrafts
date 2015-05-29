@@ -10,9 +10,10 @@ class CreativesController < ApplicationController
   def create
     @creative = Creative.new(params[:creative])
     if @creative.save
+      flash[:success] = 'OK!  Your Details are submited.'
       redirect_to root_path
     else
-      render :action => 'new'
+      render :new
     end
   end
 
