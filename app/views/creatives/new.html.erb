@@ -1,3 +1,5 @@
+
+
 <div class="causesBox">
   <h3>Creative Design work</h3>
   <p>Touchsecurecrafts is a marketplace to "Discover Unique Hand crafted Products" including Handmade, Vintage, Ethnic, Organic,IT and Natural products. help a person redesign his home/living with the latest in handicrafts.
@@ -8,45 +10,49 @@
   
   <p>
    
-    Fill out the  form below and we will be in touch with you shortly.
+    Fill out the  form below and we will be in touch with you .
   </p>
-  <%= form_for @creative, :url => creatives_path, :html => {:method => 'POST'}, :remote => true do |f| %>
-    <ul style="margin-left: -36px;width: 355px;padding: 0px 40px;">
-      <% @creative.errors.full_messages.each_with_index do |msg, index| %>
-        <li style="color: red;line-height: 20px;"><%= index+1 %>. <%= msg %></li>
-      <% end %>
-    </ul>
-    <table style='line-height: 60px;'>
-      <tr>
-        <td>Name:</td>
-        <td><%= f.text_field :name %></td>
-      </tr>
-      <tr>
-        <td>Email:</td>
-        <td><%= f.email_field :email %></td>
-      </tr>
-       <tr>
-        <td>Phone:</td>
-        <td><%= f.text_field :phone %></td>
-      </tr>
-      <tr>
-        <td>Space:</td>
-        <td><%= f.select :space, %w(Office Home) %></td>
-      </tr>
-      <tr>
-        <td>budget:</td>
-        <td><%= f.text_field :budget %></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td><%= f.submit "Add contact"  %></td>
-      </tr>
-    </table>
+  <%= form_for @creative do |f| %>
+    
+    <% if @creative.errors.any? %>
+    <div id="error_explanation">
+      <ul >
+        <% @creative.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+    <div class="form-group">
+      Name: &nbsp;&nbsp;
+      <%= f.text_field :name %>
+    </div><br>
+
+    <div class="form-group">
+     Email: &nbsp;&nbsp; 
+     <%= f.email_field :email %>
+   </div><br>
+
+   <div class="form-group">
+     phone: &nbsp;&nbsp;
+     <%= f.text_field :phone %>
+   </div><br>
+
+   <div class="form-group">
+     Space: &nbsp;&nbsp;
+     <%= f.select :space, %w(Office Home) %>
+   </div>
+   <br>
+   <div class="form-group">
+    budget: &nbsp;&nbsp;
+    <%= f.text_field :budget %>
+  </div><br>
+
+  <%= f.submit  %>
+
   <% end %>
 </div>
-
-
-
 
 
 

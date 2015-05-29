@@ -1,9 +1,12 @@
 class CreativesController < ApplicationController
+  before_filter :authenticate_user!, :except => [:new,:create]
+
   def new
     @creative = Creative.new
   end
 
   def index
+
     @creatives = Creative.all
   end
 
