@@ -575,6 +575,8 @@ ul.list-media-footer li.icon-rss{ background:url(/assets/sprite.png) no-repeat -
     padding:35px;
     margin:0px 0px 40px 0px;
     border:solid 1px #cccccd;
+     width: 93%;
+     display: inline-block;
 }
 .img-lewa{ 
     float:left;
