@@ -15,7 +15,7 @@
     <% end %>
     <% if !current_user %>
     <li><%= link_to "Sign up", new_user_path(:role => 'buyer'), :class => 'lin-signup' %></li>
-    <li><%= link_to "Seller Sign up", new_user_path(:role => "seller"), :class => "lin-signup" %> </li>
+    <li><%#= link_to "Seller Sign up", new_user_path(:role => "seller"), :class => "lin-signup" %> </li>
     <%end %>
   </ul>
 </div>
