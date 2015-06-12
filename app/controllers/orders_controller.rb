@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
 
 
   def notification
-    @notification = Twocheckout::ValidateResponse.notification({:sale_id => params['sale_id'], :vendor_id => 102569662, 
+    @notification = Twocheckout::ValidateResponse.notification({:sale_id => params['sale_id'], :vendor_id => 901278849, 
       :invoice_id => params['invoice_id'], :secret => "tango", :md5_hash => params['md5_hash']})
     @order = Order.find_by_order_number(params['sale_id'])
     if params['message_type'] == "FRAUD_STATUS_CHANGED"
