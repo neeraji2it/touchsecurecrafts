@@ -66,10 +66,11 @@ class CartsController < ApplicationController
             :net_payment => params['total'],
             :card_holder_name => params['card_holder_name'],
             :status => 'pending',
-            :order_number => params['order_number']
-
+            :order_number => params['order_number'],
+            :cart_id => params['merchant_order_id'],
+            :user_id => current_user.present? ? current_user.id : ''
             )
-          reset_session
+          session[:cart] = nil
           flash[:notice] = "Your order was successful! We will contact you directly to confirm before delivery."
           redirect_to root_url
         else
