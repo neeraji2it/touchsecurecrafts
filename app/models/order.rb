@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-  attr_accessible :user_id,:cart_id,:product_id,:receiver_id,:line_item_id,:status,:paykey,:cancel_date,:confirm_date, :details, :payment_type, :net_payment, :admin_payment, :non_profit_payment, :shipping, :buyer_type, :color, :cause, :size
+  attr_accessible :user_id,:cart_id,:product_id,:receiver_id,:line_item_id,:status,:paykey,:cancel_date,:confirm_date, :details, :payment_type, :net_payment, :admin_payment, :non_profit_payment, :shipping, :buyer_type, :color, :cause, :size, :card_holder_name, :order_number
   belongs_to :user
   belongs_to :line_item
   belongs_to :cart
@@ -47,9 +47,9 @@ class Order < ActiveRecord::Base
 
   private
   def set_payments_and_dates
-    self.admin_payment = (self.line_item.full_price.to_i*10)/100
-    self.non_profit_payment = (((self.line_item.full_price.to_f)*(self.line_item.product.non_profit_percentage))/100) if self.line_item.product.non_profit_percentage.present?
-    self.net_payment = self.line_item.full_price.to_i-self.admin_payment.to_i-self.non_profit_payment.to_i
+    # self.admin_payment = (self.line_item.full_price.to_i*10)/100
+    # self.non_profit_payment = (((self.line_item.full_price.to_f)*(self.line_item.product.non_profit_percentage))/100) if self.line_item.product.non_profit_percentage.present?
+    # self.net_payment = self.line_item.full_price.to_i-self.admin_payment.to_i-self.non_profit_payment.to_i
     self.confirm_date = Time.now
   end
 end

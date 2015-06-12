@@ -62,10 +62,13 @@ class CartsController < ApplicationController
         if @notification[:code] == "PASS"
           @cart.status = 'success'
           @cart.purchased_at = Time.now
-          @order = Order.create(:total => params['total'],
+          @order = Order.create(
+            :net_payment => params['total'],
             :card_holder_name => params['card_holder_name'],
             :status => 'pending',
-            :order_number => params['order_number'])
+            :order_number => params['order_number']
+
+            )
           reset_session
           flash[:notice] = "Your order was successful! We will contact you directly to confirm before delivery."
           redirect_to root_url
