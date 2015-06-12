@@ -52,7 +52,7 @@ class CartsController < ApplicationController
 
 
   def return
-      @notification = Twocheckout::ValidateResponse.purchase({:sid => SID, :secret => "tango", :order_number => params['order_number'], :total => params['total'], :key => KEY})
+      @notification = Twocheckout::ValidateResponse.purchase({:sid => 102569662, :secret => "tango", :order_number => params['order_number'], :total => params['total'], :key => params['key']})
 
       @cart = Cart.find(params['merchant_order_id'])
       p "******************************"
