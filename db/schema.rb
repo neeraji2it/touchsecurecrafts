@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150529055209) do
+ActiveRecord::Schema.define(:version => 20150619211914) do
 
   create_table "banner_images", :force => true do |t|
     t.string   "image_file_name"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20150529055209) do
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
     t.string   "ip_address"
+    t.string   "status"
   end
 
   create_table "categories", :force => true do |t|
@@ -206,6 +207,8 @@ ActiveRecord::Schema.define(:version => 20150529055209) do
     t.string   "buyer_type"
     t.string   "size"
     t.string   "cause"
+    t.string   "card_holder_name"
+    t.string   "order_number"
   end
 
   create_table "products", :force => true do |t|
