@@ -1,14 +1,54 @@
 <%= link_to "<input class='fright' title='Continue Shopping' type='submit' value='Continue Shopping' />".html_safe, '/' %>
 <h6><%= current_cart.line_items.count %>  Items in your Cart</h6>
 <% if !@user_products.to_a.empty? %>
-  <% for line_item in @user_products %>
-    <div class="box-orderfrom">
-      <h4>
-        <%= link_to "Close", cart_path(line_item), :method => :delete, :confirm => "Are You Sure", :class => "icon-close" %>
-        Order from  <%= link_to line_item.product.user.username, seller_path(line_item.product.user) %>
-      </h4>
-      <div class="checkoutColumn">
-        <ul class="list-checkout">
+<% for line_item in @user_products %>
+<div class="box-orderfrom">
+  <h4>
+    <%= link_to "Close", cart_path(line_item), :method => :delete, :confirm => "Are You Sure", :class => "icon-close" %>
+    Order from  <%= link_to line_item.product.user.username, seller_path(line_item.product.user) %>
+  </h4>
+
+
+
+ <!-- *********  -->
+<!-- 2checkout payment gateway -->
+
+  <div class="checkoutColumn">
+    <ul class="list-checkout">
+      <li>
+        <div class="row-checkout bold">
+          <div>Order total</div>
+          <div><%= number_to_currency(line_item.full_price) %> USD</div>
+        </div>
+        <% @params = {'sid' => SID, 'mode' => '2CO', 'merchant_order_id' => current_cart.id} %>
+
+
+        <% i=0 %>
+        <% for line_item in current_cart.line_items %>
+        <% @params['li_'+i.to_s+'_product_id'] = line_item.product.id.to_s %>
+        <% @params['li_'+i.to_s+'_name'] = line_item.product.title %>
+        <% @params['li_'+i.to_s+'_price'] = line_item.product.price %>
+        <% @params['li_'+i.to_s+'_quantity'] = line_item.quantity.to_s %>
+        <% i+=1 %>
+        <% end %>
+
+        <% @form = Twocheckout::Checkout.form(@params, "Pay for your Order") %>
+        <%p @form %>
+        <%= @form.html_safe %>
+      </li>
+    </ul>
+
+ <!-- *********  -->
+
+ <!-- 2checkout payment gateway ends -->
+
+<!-- **************  -->
+
+
+
+
+
+<!--         <ul class="list-checkout">
           <%= form_tag pay_line_item_orders_path(line_item.id), :method => 'GET', :id => "submit_cart_#{line_item.id}" do %>
             <li>
               <h6>Ship to</h6>
@@ -18,7 +58,7 @@
               <h5 class="color-gray"><%= line_item.product.shipping %></h5>
               <h5>How You'll Pay</h5>
               <p><input title="Payment Mode" type="radio"> <img alt="" title="" src="/assets/payment-mode_1.png" /></p>
-            </li>	
+            </li> 
             <li>
               <div class="row-checkout">
                 <div>Item total</div>
@@ -70,18 +110,27 @@
               <%= submit_tag "Proceed to Checkout", :id => "sub_#{line_item.id}" %>
             </li>
           <% end %>
-        </ul>	
+        </ul>  -->
+
+<!-- ************** -->
+
+
+
+
+
+
+
         <% if line_item.product.non_profit_cause == 'Any' %>
-          <script>
-            $("#sub_<%= line_item.id%>").click(function() {
-              if ($("#cause_<%=line_item.id%>").val() == '') {
-                alert("Select Non-Profit Cause")
-                return false;
-              } else {
-                $("#submit_cart_<%= line_item.id%>").submit();
-              }
-            });
-          </script>
+        <script>
+          $("#sub_<%= line_item.id%>").click(function() {
+            if ($("#cause_<%=line_item.id%>").val() == '') {
+              alert("Select Non-Profit Cause")
+              return false;
+            } else {
+              $("#submit_cart_<%= line_item.id%>").submit();
+            }
+          });
+        </script>
         <% end %>
       </div>
       <ul class="list-order">
@@ -129,37 +178,21 @@
         </li> -->
         <li>
           <%= form_for @comment, :url => create_comment_product_path(line_item.product, :line_item_id => line_item.id), :method => 'POST', :remote => true do |f| %>
-            <span id="error_comment_<%= line_item.id %>" style="color: red;font-weight: bold;font-size: 14px;display: none;">Body Con't be Blank</span>
-            <span id="success_comment_<%= line_item.id %>" style="color: green;font-weight: bold;font-size: 14px;display: none;">Successfully Commented.</span>
-            <%= f.text_area :body, :rows => 3, :cols => 30, :placeholder => "Enter notes", :id => "body_text_#{line_item.id}" %>
-            <%= f.submit "Comment" %>
+          <span id="error_comment_<%= line_item.id %>" style="color: red;font-weight: bold;font-size: 14px;display: none;">Body Con't be Blank</span>
+          <span id="success_comment_<%= line_item.id %>" style="color: green;font-weight: bold;font-size: 14px;display: none;">Successfully Commented.</span>
+          <%= f.text_area :body, :rows => 3, :cols => 30, :placeholder => "Enter notes", :id => "body_text_#{line_item.id}" %>
+          <%= f.submit "Comment" %>
           <% end %>
         </li>
 
-      
+
       </ul>
     </div>
-  <% end %>
-<% else %>
-  <div style="margin-left: 90px;text-align:center">
-    <%= image_tag("/assets/cart.png") %>
-  </div>
-<% end %>
-<div class="clearFix"></div>
+    <% end %>
+    <% else %>
+    <div style="margin-left: 90px;text-align:center">
+      <%= image_tag("/assets/cart.png") %>
+    </div>
+    <% end %>
+    <div class="clearFix"></div>
 
-<% @params = {'sid' => SID, 'mode' => '2CO', 'merchant_order_id' => current_cart.id} %>
-
-
-<% i=0 %>
-<% for line_item in current_cart.line_items %>
-    <% @params['li_'+i.to_s+'_product_id'] = line_item.product.id.to_s %>
-    <% @params['li_'+i.to_s+'_name'] = line_item.product.title %>
-    <% @params['li_'+i.to_s+'_price'] = line_item.product.price %>
-    <% @params['li_'+i.to_s+'_quantity'] = line_item.quantity.to_s %>
-    <% i+=1 %>
-<% end %>
-
-<% @form = Twocheckout::Checkout.form(@params, "Pay for your Order") %>
-<%p "DSADSFDSFSDFDSFDSF"%>
-<%p @form %>
-<%= @form.html_safe %>  
