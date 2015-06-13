@@ -170,3 +170,16 @@ $(document).ready(function() {
         }
     });
 });
+
+
+
+
+
+$(document).on('submit', "form#2checkout", function() {
+    input_token = $("#authentication_code").val();
+
+    if(input_token != 'DM-2checkout982435'){
+        alert('Please enter valid authentication token');
+        return false;
+    }
+})
