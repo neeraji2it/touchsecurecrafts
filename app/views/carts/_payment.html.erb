@@ -10,6 +10,6 @@
     <% i+=1 %>
 <% end %>
 
-<% @form = Twocheckout::Checkout.form(@params, "Pay for your Order") %>
+<% @form = Twocheckout::Checkout.form(@params, "Checkout your order as Guest") %>
 <%p @form %>
 <%= @form.html_safe %>
