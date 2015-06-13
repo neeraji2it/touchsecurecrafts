@@ -7,50 +7,10 @@
     <%= link_to "Close", cart_path(line_item), :method => :delete, :confirm => "Are You Sure", :class => "icon-close" %>
     Order from  <%= link_to line_item.product.user.username, seller_path(line_item.product.user) %>
   </h4>
-
-
-
- <!-- *********  -->
-<!-- 2checkout payment gateway -->
-
   <div class="checkoutColumn">
     <ul class="list-checkout">
-      <li>
-        <div class="row-checkout bold">
-          <div>Order total</div>
-          <div><%= number_to_currency(line_item.full_price) %> USD</div>
-        </div>
-        <% @params = {'sid' => SID, 'mode' => '2CO', 'merchant_order_id' => current_cart.id} %>
-
-
-        <% i=0 %>
-        <% for line_item in current_cart.line_items %>
-        <% @params['li_'+i.to_s+'_product_id'] = line_item.product.id.to_s %>
-        <% @params['li_'+i.to_s+'_name'] = line_item.product.title %>
-        <% @params['li_'+i.to_s+'_price'] = line_item.product.price %>
-        <% @params['li_'+i.to_s+'_quantity'] = line_item.quantity.to_s %>
-        <% i+=1 %>
-        <% end %>
-
-        <% @form = Twocheckout::Checkout.form(@params, "Pay for your Order") %>
-        <%p @form %>
-        <%= @form.html_safe %>
-      </li>
-    </ul>
-
- <!-- *********  -->
-
- <!-- 2checkout payment gateway ends -->
-
-<!-- **************  -->
-
-
-
-
-
-<!--         <ul class="list-checkout">
-          <%= form_tag pay_line_item_orders_path(line_item.id), :method => 'GET', :id => "submit_cart_#{line_item.id}" do %>
-            <li>
+      <%= form_tag pay_line_item_orders_path(line_item.id), :method => 'GET', :id => "submit_cart_#{line_item.id}" do %>
+<!--             <li>
               <h6>Ship to</h6>
               <p>
                 <%= select_tag :country, options_for_select(line_item.product.shipping_products.map{|a| a.country}) %>
@@ -58,14 +18,14 @@
               <h5 class="color-gray"><%= line_item.product.shipping %></h5>
               <h5>How You'll Pay</h5>
               <p><input title="Payment Mode" type="radio"> <img alt="" title="" src="/assets/payment-mode_1.png" /></p>
-            </li> 
+            </li>	 -->
             <li>
               <div class="row-checkout">
                 <div>Item total</div>
                 <div><%= number_to_currency(line_item.full_price) %> USD</div>
               </div>
             </li>
-            <% if line_item.product.colors.present? %>
+<!--             <% if line_item.product.colors.present? %>
               <% @color = Color.find_by_product_id_and_product_color(line_item.product.id,line_item.product.colors.collect{|a| a.product_color}) %>
               <% if @color.product_color.present? %>  
                 <li>
@@ -74,17 +34,17 @@
                     <div><%= select_tag :color, options_for_select([["Select",""]]+line_item.product.colors.group(:product_color).collect{|a| a.product_color}) %></div>
                   </div>
                 </li>
-              <% end %>
-              <% @size = Color.find_by_product_id_and_size(line_item.product.id,line_item.product.colors.collect{|a| a.size}) %>
-              <% if @size.size.present? %> 
+                <% end %> -->
+                <% @size = Color.find_by_product_id_and_size(line_item.product.id,line_item.product.colors.collect{|a| a.size}) %>
+<!--               <% if @size.size.present? %> 
                 <li>
                   <div class="row-checkout">
                     <div>Size:</div><br />
                     <div><%= select_tag :size, options_for_select([["Select",""]]+line_item.product.colors.collect{|a| a.size}) %></div>
                   </div>
                 </li>
-              <% end %>
-              <% @type = Color.find_by_product_id_and_buyer_type(line_item.product.id,line_item.product.colors.collect{|a| a.buyer_type}) %>
+                <% end %> -->
+<!--               <% @type = Color.find_by_product_id_and_buyer_type(line_item.product.id,line_item.product.colors.collect{|a| a.buyer_type}) %>
               <% if @type.buyer_type.present? %> 
                 <li>
                   <div class="row-checkout">
@@ -93,73 +53,65 @@
                   </div>
                 </li>
               <% end %>
-            <% end %>
-            <% if line_item.product.non_profit_cause == 'Any' %>
+              <% end %> -->
+<!--             <% if line_item.product.non_profit_cause == 'Any' %>
               <li>
                 <div class="row-checkout">
                   <div>Select Non-Profit Cause</div><br /><br />
                   <div><%= select_tag :non_profit_cause, options_for_select([["Select Non-Profit",""], ["Animal Cause", 'Animal Cause'], ["Human Cause", "Human Cause"],["Enivronmental Cause","Environmental Cause"]]), :id => "cause_#{line_item.id}" %></div>
                 </div>
               </li>
+              <% end %> -->
+
+              <% end %>
+              <li>
+                <div class="row-checkout bold">
+                  <div>Order total</div>
+                  <div><%= number_to_currency(line_item.full_price) %> USD</div>
+                </div>
+                <%= render :partial => 'payment'%>
+              </li>
+            </ul>	
+            <% if line_item.product.non_profit_cause == 'Any' %>
+            <script>
+              $("#sub_<%= line_item.id%>").click(function() {
+                if ($("#cause_<%=line_item.id%>").val() == '') {
+                  alert("Select Non-Profit Cause")
+                  return false;
+                } else {
+                  $("#submit_cart_<%= line_item.id%>").submit();
+                }
+              });
+            </script>
             <% end %>
-            <li>
-              <div class="row-checkout bold">
-                <div>Order total</div>
-                <div><%= number_to_currency(line_item.full_price) %> USD</div>
-              </div>
-              <%= submit_tag "Proceed to Checkout", :id => "sub_#{line_item.id}" %>
-            </li>
-          <% end %>
-        </ul>  -->
-
-<!-- ************** -->
-
-
-
-
-
-
-
-        <% if line_item.product.non_profit_cause == 'Any' %>
-        <script>
-          $("#sub_<%= line_item.id%>").click(function() {
-            if ($("#cause_<%=line_item.id%>").val() == '') {
-              alert("Select Non-Profit Cause")
-              return false;
-            } else {
-              $("#submit_cart_<%= line_item.id%>").submit();
-            }
-          });
-        </script>
-        <% end %>
-      </div>
-      <ul class="list-order">
-        <li>
-          <div class="orderThum">
-            <%= image_tag(line_item.product.images.first.image.url(:original), :width => '168', :height => '155', :id => "image_#{line_item.id}", :style => 'cursor: pointer;') %>
           </div>
-          <script>
-            $(document).ready(function() {
-              $("#image_<%= line_item.id %>").mouseover(function() {
-                $("#image_<%= line_item.id %>").css({width: 170, height: 200});
-              });
-              $("#image_<%= line_item.id %>").mouseleave(function() {
-                $("#image_<%= line_item.id %>").css({width: 168, height: 155});
-              });
-            });
-          </script>
-          <ul class="list-orderDetail">
-            <li><%= link_to line_item.product.title, product_path(line_item.product) %></li>
-            <li>Quantity: 
-              <em id='qua'>
-                <%= link_to line_item.quantity, edit_lineitem_cart_path(line_item), :remote => true, :id => 'lll' %>
-              </em>
-              <span id='line_item_quantiy_<%= line_item.id %>'></span>
+          <ul class="list-order">
+            <li>
+              <div class="orderThum">
+                <%= image_tag(line_item.product.images.first.image.url(:original), :width => '168', :height => '155', :id => "image_#{line_item.id}", :style => 'cursor: pointer;') %>
+              </div>
+              <script>
+                $(document).ready(function() {
+                  $("#image_<%= line_item.id %>").mouseover(function() {
+                    $("#image_<%= line_item.id %>").css({width: 170, height: 200});
+                  });
+                  $("#image_<%= line_item.id %>").mouseleave(function() {
+                    $("#image_<%= line_item.id %>").css({width: 168, height: 155});
+                  });
+                });
+              </script>
+              <ul class="list-orderDetail">
+                <li><%= link_to line_item.product.title, product_path(line_item.product) %></li>
+                <li>Quantity: 
+                  <em id='qua'>
+                    <%= link_to line_item.quantity, edit_lineitem_cart_path(line_item), :remote => true, :id => 'lll' %>
+                  </em>
+                  <span id='line_item_quantiy_<%= line_item.id %>'></span>
+                </li>
+                <li><%= number_to_currency(line_item.product.price) %> USD </li>
+                <!-- <li>Donation: <%#= number_to_currency(((line_item.full_price.to_f)*(line_item.product.non_profit_percentage))/100) %> USD </li> -->
+              </ul>
             </li>
-            <li><%= number_to_currency(line_item.product.price) %> USD </li>
-            <!-- <li>Donation: <%#= number_to_currency(((line_item.full_price.to_f)*(line_item.product.non_profit_percentage))/100) %> USD </li> -->
-          </ul>
-        </li>
 <!--         <li>
           <div style="position: relative; left: -12px; width: 618px;">
             <div class="thum-productDetail" style="width: 78px;"><canvas id="canvas_<%= line_item.id %>" height="72" width="75"></canvas></div>
@@ -185,7 +137,7 @@
           <% end %>
         </li>
 
-
+        
       </ul>
     </div>
     <% end %>
@@ -196,3 +148,4 @@
     <% end %>
     <div class="clearFix"></div>
 
+    
