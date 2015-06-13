@@ -19,12 +19,13 @@
               <h5>How You'll Pay</h5>
               <p><input title="Payment Mode" type="radio"> <img alt="" title="" src="/assets/payment-mode_1.png" /></p>
             </li>	 -->
-            <li>
+<!--             <li>
               <div class="row-checkout">
                 <div>Item total</div>
                 <div><%= number_to_currency(line_item.full_price) %> USD</div>
+
               </div>
-            </li>
+            </li> -->
 <!--             <% if line_item.product.colors.present? %>
               <% @color = Color.find_by_product_id_and_product_color(line_item.product.id,line_item.product.colors.collect{|a| a.product_color}) %>
               <% if @color.product_color.present? %>  
@@ -67,7 +68,9 @@
               <li>
                 <div class="row-checkout bold">
                   <div>Order total</div>
-                  <div><%= number_to_currency(line_item.full_price) %> USD</div>
+                  <div><%= number_to_currency(line_item.full_price) %> USD</div><br>
+                  <div>Grand total</div>
+                  <div><%= number_to_currency(@cart.total_price) %> USD</div>
                 </div>
                 <%= render :partial => 'payment'%>
               </li>
@@ -137,7 +140,7 @@
           <% end %>
         </li>
 
-        
+
       </ul>
     </div>
     <% end %>
@@ -148,4 +151,3 @@
     <% end %>
     <div class="clearFix"></div>
 
-    
