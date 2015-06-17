@@ -61,7 +61,7 @@ class HomeController < ApplicationController
   def about_us
   end
   
-  def delivary_information
+  def delivery_information
   end
   
   def privacy_policy

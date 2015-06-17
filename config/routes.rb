@@ -113,7 +113,7 @@ ICS::Application.routes.draw do
   get '/admin_dashboard' => 'admins#admin_dashboard', :as => :admin_dashboard
   get '/faqs' => 'home#faqs', :as => :faqs
   get '/about_us' => 'home#about_us', :as => :about_us
-  get '/delivary_information' => 'home#delivary_information', :as => :delivary_information
+  get '/delivery_information' => 'home#delivery_information', :as => :delivery_information
   get '/privacy_policy' => 'home#privacy_policy', :as => :privacy_policy
   get '/terms_conditions' => 'home#terms_conditions', :as => :terms_conditions
   #get '/contact_us' => 'contacts#new', :as => :contact_us
