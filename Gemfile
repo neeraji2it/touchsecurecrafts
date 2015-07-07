@@ -18,8 +18,6 @@ gem 'aws-sdk'
 gem "omniauth-google-oauth2"
 gem 'omniauth-yahoo'
 gem 'omniauth-linkedin'
-gem 'rvm-capistrano'
-gem 'capistrano-ext'
 gem 'execjs'
 gem 'therubyracer', :platforms => :ruby
 gem 'nokogiri'
@@ -37,8 +35,6 @@ gem 'nested_form'
 gem 'twocheckout'
 ###
 
-# Gems used only for assets and not required
-# in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -48,18 +44,6 @@ end
 
 gem 'jquery-rails'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
-#gem 'pry-rails'
+# deployment
+gem 'capistrano', '~> 3.4.0'
