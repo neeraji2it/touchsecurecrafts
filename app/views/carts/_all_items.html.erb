@@ -22,18 +22,18 @@
                 </div>
                 <%= text_field_tag :authentication_code, nil, placeholder: 'Authentication token' %>
                 <br/>
-                <%= render :partial => 'payment'%>
+                <%#= render :partial => 'payment'%>
 
                 <br/>
                 <div id="gateway">
-                  <%= form_tag "/payments/TestSsl.php" do %>
+                  <%= form_tag "/payments/index.php" do %>
                     <%= hidden_field_tag :amount, @cart.total_price %>
                     <%= submit_tag "Checkout with ICICI" %>
                   <% end %>
                 </div>
 
               </li>
-            </ul>	
+            </ul>
             <% if line_item.product.non_profit_cause == 'Any' %>
             <script>
               $("#sub_<%= line_item.id%>").click(function() {
@@ -64,7 +64,7 @@
               </script>
               <ul class="list-orderDetail">
                 <li><%= link_to line_item.product.title, product_path(line_item.product) %></li>
-                <li>Quantity: 
+                <li>Quantity:
                   <em id='qua'>
                     <%= link_to line_item.quantity, edit_lineitem_cart_path(line_item), :remote => true, :id => 'lll' %>
                   </em>
