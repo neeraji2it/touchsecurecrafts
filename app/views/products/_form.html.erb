@@ -49,7 +49,7 @@
     <td><%= f.label :price, "Price:#{mark}".html_safe %></td>
     <td><%= f.text_field :price %></td>
   </tr>
-  <% if @product.new_record? || @product.images.blank? %>
+  <%# if @product.new_record? || @product.images.blank? %>
     <tr class="row">
       <td valign="top">Images:<%= "#{mark}".html_safe %></td>
       <td>
@@ -63,7 +63,7 @@
         <br />
       </td>
     </tr>
-  <% end %>
+  <%# end %>
 <!--   <tr class="row">
     <td><%= f.label :non_profit_cause, "Select Cause Category:#{mark}".html_safe %></td>
     <td>
