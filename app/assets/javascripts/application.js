@@ -175,7 +175,7 @@ $(document).ready(function() {
 
 
 
-$(document).on('submit', "form#2checkout", function() {
+$(document).on('submit', "form#icici-gateway", function() {
     input_token = $("#authentication_code").val();
 
     if(input_token != 'DM-2checkout982435'){
