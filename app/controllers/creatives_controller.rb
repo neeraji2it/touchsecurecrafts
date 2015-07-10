@@ -13,8 +13,9 @@ class CreativesController < ApplicationController
   def create
     @creative = Creative.new(params[:creative])
     if @creative.save
-      flash[:success] = 'OK!  Your Details are submited.'
-      redirect_to root_path
+      # flash[:success] = 'OK!  Your Details are submited.'
+      # redirect_to root_path
+      redirect_to "/payments/index.php?amount=#{@creative.budget}"
     else
       render :new
     end
