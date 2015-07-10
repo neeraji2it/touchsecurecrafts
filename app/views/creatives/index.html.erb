@@ -4,7 +4,7 @@
     <div class="column"> Name</div>
         <div class="column">Email</div>
     <div class="column">Phone Number</div>
-    <div class="column">Space</div>
+    <div class="column">Alternate Phone</div>
     <div class="column">Posted on</div>
     <div class="column">Budget</div>
 
@@ -17,7 +17,7 @@
       <div class="column"><%=  creative.name %></div>
        <div class="column"><%= creative.email %></div>
       <div class="column"><%= creative.phone %></div>
-      <div class="column"><%= creative.space %></div>
+      <div class="column"><%= creative.alternate_phone %></div>
       <div class="column"><%= creative.created_at.strftime("%Y-%m-%d") %></div>
       <div class="column"><%= number_to_currency(creative.budget) %></div>
      

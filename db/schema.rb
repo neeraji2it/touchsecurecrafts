@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150619211914) do
+ActiveRecord::Schema.define(:version => 20150710103126) do
 
   create_table "banner_images", :force => true do |t|
     t.string   "image_file_name"
@@ -123,9 +123,11 @@ ActiveRecord::Schema.define(:version => 20150619211914) do
     t.string   "email"
     t.string   "phone"
     t.string   "space"
-    t.decimal  "budget",     :precision => 10, :scale => 0
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.decimal  "budget",          :precision => 10, :scale => 0
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+    t.text     "billing_address"
+    t.string   "alternate_phone"
   end
 
   create_table "email_alerts", :force => true do |t|
