@@ -41,6 +41,23 @@
      <div class="col-sm-9"><%= f.text_field :phone %></div>
    </div><br>
 
+     <div class="form-group">
+     <div class="col-sm-3">City: &nbsp;&nbsp;</div>
+
+     <div class="col-sm-9"><%= f.text_field :city %></div>
+   </div><br>
+
+  <div class="form-group">
+     <div class="col-sm-3">Country: &nbsp;&nbsp;</div>
+
+     <div class="col-sm-9"><%= f.text_field :country %></div>
+   </div><br>
+  <div class="form-group">
+     <div class="col-sm-3">Post code: &nbsp;&nbsp;</div>
+
+     <div class="col-sm-9"><%= f.text_field :postal_code %></div>
+   </div><br>
+
   <!--  <div class="form-group">
      Space: &nbsp;&nbsp;
      <%#= f.select :space, %w(Office Home) %>
@@ -53,7 +70,7 @@
    </div>
    <br>
    <div class="form-group">
-     <div class="col-sm-3">Billing Address:</div>
+     <div class="col-sm-3">Address:</div>
 
      <div class="col-sm-9"><%= f.text_field :billing_address %></div>
    </div> <br>
@@ -77,3 +94,8 @@
     text-indent: 10px;
   }
 </style>
+
+
+city,
+postal code,
+country
