@@ -20,6 +20,7 @@
 //= require social-share-button
 //= require navbar
 //= require waypoints.min
+//= require signature-pad
 //= require script
 //= require_tree .
 
@@ -37,6 +38,10 @@ $(function() {
             $(this).remove();
         }
     });
+});
+
+$(document).ready(function () {
+  $('#new_sign').signaturePad();
 });
 
 function select_sub_category(cat_id, sub_cat_id) {
@@ -173,8 +178,6 @@ $(document).ready(function() {
 
 
 
-
-
 // $(document).on('submit', "form.icici-gateway", function() {
 //     input_token = $("#authentication_code").val();
 
@@ -183,3 +186,5 @@ $(document).ready(function() {
 //         return false;
 //     }
 // })
+
+

@@ -91,4 +91,16 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+  
+  def generated_token
+    loop do
+      token = SecureRandom.urlsafe_base64(32)
+      break token unless Payment.exists?(token: token)
+    end
+  end
+  helper_method :generated_token
+
 end
+
+
+

@@ -1,5 +1,7 @@
 ICS::Application.routes.draw do
- 
+
+
+
   devise_for :users, :controllers => {:sessions => 'sessions'}
 
 
@@ -138,6 +140,14 @@ ICS::Application.routes.draw do
   match '/notification' => 'orders#notification'
 
   match 'orders/:id/refund' => 'orders#refund', :as => 'refund'
+  resources :signatures, only: [:create, :new]
+  resources :payments do
+    member do
+      get :payment_pdf
+      get :next_step
+      get :thankyou
+    end
+  end
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

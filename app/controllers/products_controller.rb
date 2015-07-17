@@ -165,7 +165,7 @@ class ProductsController < ApplicationController
 
   def preview_product
     @product = Product.find(params[:id])
-    render :layout => false
+    #render :layout => false
   end
   
   def review

@@ -43,7 +43,12 @@ end
 
 gem 'jquery-rails'
 
-
+gem 'simple_form'
+gem 'country_select'
+gem 'pry-rails'
+gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'
+gem 'signature-pad-rails'
 # deployment
 gem 'capistrano', '~> 3.1'
 gem 'capistrano-rails', '~> 1.1'

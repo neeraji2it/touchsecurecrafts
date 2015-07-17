@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150710111726) do
+ActiveRecord::Schema.define(:version => 20150717115714) do
 
   create_table "banner_images", :force => true do |t|
     t.string   "image_file_name"
@@ -216,6 +216,28 @@ ActiveRecord::Schema.define(:version => 20150710111726) do
     t.string   "order_number"
   end
 
+  create_table "payments", :force => true do |t|
+    t.string   "product_name"
+    t.string   "customer_name"
+    t.text     "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "post_code"
+    t.string   "country"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "card_number"
+    t.decimal  "amount",        :precision => 8, :scale => 2
+    t.boolean  "is_signed",                                   :default => false
+    t.datetime "created_at",                                                     :null => false
+    t.datetime "updated_at",                                                     :null => false
+    t.string   "token"
+    t.date     "date_of_birth"
+    t.string   "card_expiry"
+    t.string   "card_cvv"
+    t.string   "ip_address"
+  end
+
   create_table "products", :force => true do |t|
     t.integer  "user_id"
     t.integer  "category_id"
@@ -282,6 +304,13 @@ ActiveRecord::Schema.define(:version => 20150710111726) do
     t.string   "cost"
     t.string   "location"
     t.string   "item_cost"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "signs", :force => true do |t|
+    t.integer  "payment_id"
+    t.text     "signature"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
