@@ -40,6 +40,7 @@
     </div><br/>
 
     <div class="input-group">
+    <h4>Date of Birth</h4>
       <span class="input-group-addon glyphicon glyphicon-calendar"><i class="fa fa-calendar"></i></span>
       <%= f.text_field :date_of_birth, as: :string, input_html: { class: "datepicker" }, placeholder: "Date of Birth",:id => "datepicker", class: "form-control input-lg ", label: false %>
     </div><br/>
@@ -121,8 +122,17 @@
   }
 
 
+.ui-datepicker-month
+{
+  min-width: 20px;
 
+}
 
+.ui-datepicker-year
+{
+  min-width: 20px;
+
+}
 
 </style>
 <script>
@@ -132,7 +142,10 @@
       dateFormat: 'dd-mm-yy',
       todayHighlight: true,
       todayBtn: 'linked',
-      autoclose: true
+      autoclose: true,
+      maxDate: 0,
+      changeMonth: true,
+      changeYear: true
 
     }
 

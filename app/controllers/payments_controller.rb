@@ -1,6 +1,7 @@
 class PaymentsController < ApplicationController
   before_filter :payment, only: [:payment_pdf, :show, :destroy, :next_step, :thankyou]
 before_filter :verify_token, only: [:show, :payment_pdf]
+before_filter :require_http_for_admin, :only => ['index']
   def new
     @payment = Payment.new
   end
@@ -12,9 +13,9 @@ before_filter :verify_token, only: [:show, :payment_pdf]
       #gflash success: "Payments was successfully created."
 
       # send email with the link to sign the payment
-      PaymentMailer.payment_confirmation(@payment).deliver
-      
-      redirect_to "/payments/index.php?amount=#{@payment.amount}"
+      #PaymentMailer.payment_confirmation(@payment).deliver
+     redirect_to payment_url(@payment, signature_token: @payment.token)
+      #redirect_to "/payments/index.php?amount=#{@payment.amount}"
     else
      # gflash :now, error: @payment.errors.full_messages.join("<br/>").html_safe
       render :new
@@ -23,7 +24,7 @@ before_filter :verify_token, only: [:show, :payment_pdf]
 
 
   def index
-    payments
+    @payments = Payment.all
   end
 
   def show

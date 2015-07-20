@@ -76,6 +76,12 @@ class ApplicationController < ActionController::Base
     cart
   end
 
+  def require_http_for_admin
+    authenticate_or_request_with_http_basic do |login, password|
+      login == "dine-media" && password=="dine!@#$%"
+    end
+  end
+
   private
 
   def is_valid_account?
