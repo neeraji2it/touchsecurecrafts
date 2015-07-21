@@ -10,4 +10,14 @@ class Payment < ActiveRecord::Base
                     :format => { :with => /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/ ,
                     :message => 'is invalid!'},
                     :on => :create
+  
+def self.search(search)
+  if search
+     find(:all, :conditions => ['customer_name LIKE ?', "%#{search}%"])
+  else
+    :all
+  end
+end
+
+
 end

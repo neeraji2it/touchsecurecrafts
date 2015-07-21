@@ -24,7 +24,10 @@ before_filter :require_http_for_admin, :only => ['index']
 
 
   def index
-    @payments = Payment.all
+
+    @payments = params[:search] ? Payment.search(params[:search]) : Payment.all
+   # @payments = Payment.search(params[:search])
+    render :layout => false
   end
 
   def show

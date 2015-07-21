@@ -40,7 +40,8 @@
 
     <div class="input-group">
       <span class="input-group-addon glyphicon glyphicon-calendar"><i class="fa fa-calendar"></i></span>
-      <%= f.text_field :date_of_birth, as: :string, input_html: { class: "datepicker" }, placeholder: "Date of Birth",:id => "datepicker", class: "form-control input-lg required" %>
+      <%#= f.text_field :date_of_birth, as: :string, input_html: { class: "datepicker" }, placeholder: "Date of Birth",:id => "datepicker", class: "form-control input-lg required" %>
+      <%= f.date_select("date_of_birth", {:order => [:day, :month, :year], :end_year => Time.now.strftime('%Y').to_i - 60,  :start_year => Time.now.strftime('%Y').to_i, :use_month_numbers => true}) %>
     </div><br/>
 
 <div class="input-group">
@@ -123,7 +124,7 @@
   }
 
 
-.ui-datepicker-month
+/*.ui-datepicker-month
 {
   min-width: 20px;
 
@@ -133,14 +134,15 @@
 {
   min-width: 20px;
 
-}
-#payment_card_expiry_1i
+}*/
+
+
+
+
+#payment_card_expiry_1i,#payment_date_of_birth_3i,#payment_card_expiry_2i,#payment_date_of_birth_2i,#payment_date_of_birth_1i
+
 {
-  min-width: 20px;
-}
-#payment_card_expiry_2i
-{
-  min-width: 20px;
+  min-width: 60px;
 }
 
 .error{
