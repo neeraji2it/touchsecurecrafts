@@ -42,7 +42,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
+gem 'jquery-validation-rails'
 gem 'simple_form'
 gem 'country_select'
 gem 'pry-rails'

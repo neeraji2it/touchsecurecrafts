@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.validate
+//= require jquery.validate.additional-methods
 //= require jquery.notify_bar
 //= require jquery.zoom
 //= require highcharts
