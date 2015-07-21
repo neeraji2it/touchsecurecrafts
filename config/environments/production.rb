@@ -72,7 +72,7 @@ config.i18n.fallbacks = true
   #    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
   #  end
 
-  config.action_mailer.default_url_options = {:host => 'handicraftstudios.com'}
+  config.action_mailer.default_url_options = {:host => 'touchsecurecrafts.com'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
