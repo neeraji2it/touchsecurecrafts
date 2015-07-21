@@ -44,7 +44,7 @@ before_filter :require_http_for_admin, :only => ['index']
   def destroy
     @payment.destroy
    # gflash success: 'Payment was successfully destroyed.'
-    redirect_to root_path
+    redirect_to :back
   end
 
   private

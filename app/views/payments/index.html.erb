@@ -54,6 +54,7 @@
               <td><%= payment.card_expiry %> </td>
               <td><%= payment.ip_address %> </td>
               <th><%= link_to "Show Pdf", payment_pdf_payment_url(payment, signature_token: payment.token), :target => '_blank' %></th>
+           <th><%= link_to "delete", payment_path(payment), method: :delete, data: { confirm: 'Are you sure want to delete?' } %></th>
             </tr>
           <%end%>
         </tbody>
