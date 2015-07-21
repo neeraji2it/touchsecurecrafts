@@ -109,10 +109,9 @@
 
           <p>
             ThankYou for confirming your payment for the product <%= @payment.product_name %> from touchsecurecrafts.com. You can <strong>download</strong> the payment detail with your confirmation in pdf format.
-
             <p>Please visit below url, if you want to download your payment confirmation:</p>
 
-            <p><%= payment_pdf_payment_url(@payment, signature_token: @payment.token) %></p>
+    <p><%= payment_pdf_payment_url(@payment, signature_token: @payment.token) %></p>
           </p>
         </div>
 
