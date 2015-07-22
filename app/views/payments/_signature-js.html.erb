@@ -757,7 +757,7 @@
             self.clearCanvas()
             $(settings.typed, context).hide()
 
-            if (typeof paths === 'text')
+            if (typeof paths === 'string')
               paths = JSON.parse(paths)
 
             drawSignature(paths, canvasContext, true)
