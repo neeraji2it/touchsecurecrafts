@@ -48,6 +48,7 @@ Customer Name:
       <td><%= payment.card_number %> </td>
       <td><%= payment.ip_address %> </td>
       <td><%= link_to "Show Pdf", payment_pdf_payment_url(payment, signature_token: payment.token), :target => '_blank' %>
+      <td><%= link_to "Show", payment_url(payment, signature_token: payment.token), :target => '_blank' %>
         <%= link_to "Delete", payment_path(payment), method: :delete, data: { confirm: 'Are you sure want to delete?' } %></td>
       </tr>
       <%end%>
