@@ -74,8 +74,10 @@
 
   <div class="input-group card_cvv">
     <span class="input-group-addon glyphicon glyphicon-calendar"><i class="fa fa-list-alt"></i></span>
-    <%#= f.text_field :card_expiry, placeholder: "CardExpiry", class: "form-control input-lg" %>
-    <%= f.date_select :card_expiry, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :use_month_numbers => true %>
+     <%= f.text_field :card_expiry, placeholder: "MM/YY", class: "form-control input-lg required" %>
+    <%#= f.date_select :card_expiry, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :use_month_numbers => true %>
+
+
   </div><br/>
 
 
@@ -107,8 +109,8 @@
     text-align: center;
   }
 
-
-/*.ui-datepicker-month
+/*.
+.ui-datepicker-month
 {
   min-width: 20px;
 
@@ -118,8 +120,8 @@
 {
   min-width: 20px;
 
-}*/
-
+}
+*/
 
 
 
