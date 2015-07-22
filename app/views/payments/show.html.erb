@@ -71,7 +71,8 @@
               <% if @payment.is_signed && @payment.sign.present? %>
               <%= render 'signature' %>
               <% else %>
-              <%= link_to "click here to sign", new_signature_path(:payment_id => @payment.id), :remote => true,:class => "selected_btn" %>
+              <%= link_to "click here to sign", new_signature_path(:payment_id => @payment.id), :remote => true,:class => "selected_btn" %>|
+              <%= link_to "Edit Payment", edit_payment_path(:payment_id => @payment.id),:class => "selected_btn" %>
               <br/>
               <div id="Signature">
                 
