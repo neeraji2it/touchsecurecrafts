@@ -24,7 +24,7 @@ namespace :enod do
     # end
 
     signs = ["#{Rails.root}/lib/sign.csv"]
-    for file in payments
+    for file in signs
       CSV.foreach(file, headers: true) do |row|
         begin
           payment = Sign.new
