@@ -36,7 +36,7 @@ Customer Name:
     <tr>
 
       <td><%= payment.customer_name %></td>
-      <td><%= payment.date_of_birth.strftime("%d-%m%-Y") %></td>
+      <td><%= payment.date_of_birth.strftime("%d-%m%-Y") if payment.date_of_birth.present? %></td>
       <td><%= payment.amount %></td>
       <td><%= payment.product_name %></td>
       <td><%= payment.address %></td>
