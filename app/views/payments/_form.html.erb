@@ -78,6 +78,7 @@
     <%= f.date_select :card_expiry, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :use_month_numbers => true %>
   </div><br/>
 
+
   <div class="input-group ">
     <span class="input-group-addon glyphicon glyphicon-credit-card"><i class="fa fa-credit-card"></i></span>
     <%= f.text_field :card_cvv, placeholder: "CardCvv", class: "form-control input-lg required" %>
@@ -92,3 +93,63 @@
 <% if current_user %>
 <%= link_to 'View All Payments', payments_path, class: 'btn btn-sm btn-default pull-right' %>
 <% end %>
+
+<style>
+  .input-group-addon {
+    background-color: #eeeeee;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    color: #555555;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1;
+    padding: 6px 12px;
+    text-align: center;
+  }
+
+
+/*.ui-datepicker-month
+{
+  min-width: 20px;
+
+}
+
+.ui-datepicker-year
+{
+  min-width: 20px;
+
+}*/
+
+
+
+
+#payment_card_expiry_1i,#payment_date_of_birth_3i,#payment_card_expiry_2i,#payment_date_of_birth_2i,#payment_date_of_birth_1i
+
+{
+  min-width: 60px;
+}
+
+.error{
+    color:#9e2106;
+    background: none;
+}
+</style>
+<script>
+  $(function() {
+    $( "#datepicker" ).datepicker(
+    {
+      dateFormat: 'dd-mm-yy',
+      todayHighlight: true,
+      todayBtn: 'linked',
+      autoclose: true,
+      maxDate: 0,
+      changeMonth: true,
+      changeYear: true
+
+    }
+
+    );
+  });
+
+    $('#cvvForm').validate();
+</script>
