@@ -4,8 +4,7 @@
 <span class="signature-date-placeholder">
   <%= @payment.sign.created_at.utc.strftime("%B %d %Y - %H:%M %p") unless @payment.try(:sign).blank? %>
 </span>
-
-
+<%= render :partial => 'signature-js' %>
 <script>
   $(function() {
     var data = <%= @payment.sign.signature.to_json.html_safe %>;
