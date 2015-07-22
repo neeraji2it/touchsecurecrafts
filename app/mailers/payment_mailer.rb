@@ -1,5 +1,5 @@
 class PaymentMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "support@touchsecurecrafts.com"
   def payment_confirmation(payment)
     @payment = payment
     mail(to: @payment.email, subject: 'Please confirm payment and sign it')
