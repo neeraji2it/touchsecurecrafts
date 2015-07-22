@@ -13,6 +13,13 @@ class CreatePayments < ActiveRecord::Migration
       t.string :card_number
       t.decimal :amount, precision: 8, scale: 2
       t.boolean :is_signed, default: false
+      t.string :token
+      t.date   :date_of_birth
+      t.string :card_expiry
+      t.string :card_cvv
+      t.string :ip_address
+      t.string :slug
+      t.integer :user_id
       t.timestamps
     end
   end
