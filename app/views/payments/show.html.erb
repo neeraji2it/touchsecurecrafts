@@ -55,7 +55,7 @@
             <strong>    <%= @payment.card_number %>  </strong>  <hr/> 
             <br/>
             <b>Card Expiry:</b>&nbsp;&nbsp;&nbsp;&nbsp;
-            <strong>   <%= @payment.card_expiry.strftime("%Y-%m") if @payment.card_expiry?%></strong>   <hr/>
+            <strong>   <%= @payment.card_expiry %></strong>   <hr/>
             <br/>
             <b>Card CVV:</b>&nbsp;&nbsp;&nbsp;&nbsp;
             <strong>  <%= @payment.card_cvv%></strong>   <hr/>
