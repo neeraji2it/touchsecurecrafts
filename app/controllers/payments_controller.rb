@@ -1,6 +1,6 @@
 class PaymentsController < ApplicationController
-  before_filter :payment, only: [:payment_pdf,:edit,:update, :show, :destroy, :next_step, :thankyou]
-  before_filter :verify_token, only: [:show, :payment_pdf]
+  before_filter :payment, only: [:payment_pdf,:edit,:update, :show,  :next_step, :thankyou]
+  before_filter :verify_token, only: [:show,:payment_pdf]
   before_filter :require_http_for_admin, :only => ['index']
   def new
     @payment = Payment.new
@@ -20,10 +20,9 @@ class PaymentsController < ApplicationController
    end
  end
 
-
  def index
   @payments = params[:search] ? Payment.search(params[:search]) : Payment.all
-  render :layout => false
+ render :layout => false
 end
 
 def edit
@@ -55,9 +54,8 @@ end
 
 def destroy
   @payment.destroy
-   # gflash success: 'Payment was successfully destroyed.'
-   redirect_to :back
- end
+  redirect_to :back
+end
 
  private
 
@@ -74,8 +72,6 @@ end
 
 
 end
-
-
 
 
 
