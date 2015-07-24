@@ -1,6 +1,6 @@
 class PaymentsController < ApplicationController
-  before_filter :payment, only: [:payment_pdf,:edit,:update, :show,  :next_step, :thankyou]
-  before_filter :verify_token, only: [:show,:payment_pdf]
+  before_filter :payment, only: [:payment_pdf,:edit,:destroy,:update, :show,  :next_step, :thankyou]
+  before_filter :verify_token, only: [:show,:destroy,:payment_pdf]
   before_filter :require_http_for_admin, :only => ['index']
   def new
     @payment = Payment.new
@@ -21,7 +21,7 @@ class PaymentsController < ApplicationController
  end
 
  def index
-  @payments = params[:search] ? Payment.search(params[:search]) : Payment.all
+ @payments = params[:search] ? Payment.search(params[:search]) : Payment.all
  render :layout => false
 end
 

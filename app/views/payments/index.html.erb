@@ -1,4 +1,5 @@
-<% @page_title = "Payments" %>
+<%= javascript_include_tag 'application' %>
+    <title><%= @site_title || "Touchsecurecrafts Payments" %></title>
 
 <div>
 <h4 class="panel-title pull-left" style="padding-top: 7.5px;">
@@ -17,10 +18,8 @@ Customer Name:
     <tr>
       <th> CustomerName </th>
       <th> DOB </th>
-      <th> amount </th>
+      <th> Amount </th>
       <th> ProductName </th>
-      <th> Address</th>
-      <th> City </th>
       <th> State </th>
       <th> Country </th>
       <th> Phone</th>
@@ -39,8 +38,6 @@ Customer Name:
       <td><%= payment.date_of_birth.strftime("%d-%m-%Y") if payment.date_of_birth.present? %></td>
       <td><%= payment.amount %></td>
       <td><%= payment.product_name %></td>
-      <td><%= payment.address %></td>
-      <td><%= payment.city %></td>
       <td><%= payment.state %></td>
       <td><%= payment.country %></td>
       <td><%= payment.phone %></td>
@@ -48,7 +45,7 @@ Customer Name:
       <td><%= payment.card_number %> </td>
       <td><%= payment.ip_address %> </td>
       <td><%= link_to "Show Pdf", payment_pdf_payment_url(payment, signature_token: payment.token), :target => '_blank' %>
-            <%#= link_to "Delete", payment_path(payment), :method => :delete, :data => { :confirm => 'Are you sure want to delete?' } %></td>
+            <%= link_to "Delete", payment_path(payment,signature_token: payment.token), :method => :delete, :data => { :confirm => 'Are you sure want to delete?' } %></td>
 
       </tr>
       <%end%>
