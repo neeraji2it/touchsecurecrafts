@@ -78,8 +78,8 @@ config.i18n.fallbacks = true
     :address              => "smtp.gmail.com",
     :port                 => 587,
     #:domain               => 'baci.lindsaar.net',
-    :user_name            => 'oe.member1@gmail.com',
-    :password             => '0nlineeduc@ti0n',
+    :user_name            => 'support@touchsecurecrafts.com',
+    :password             => 'dine@2016',
     :authentication       => 'plain',
     :enable_starttls_auto => true
   }

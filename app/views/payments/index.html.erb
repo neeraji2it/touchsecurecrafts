@@ -1,27 +1,24 @@
 <%= javascript_include_tag 'application' %>
-    <title><%= @site_title || "Touchsecurecrafts Payments" %></title>
+<title><%= @site_title || "Touchsecurecrafts Payments" %></title>
 
 <div>
-<h4 class="panel-title pull-left" style="padding-top: 7.5px;">
-  <strong><%= pluralize Payment.count, "Payment" %></strong>
-</h4>
-Customer Name:
-<%= form_tag payments_path, :method => 'get' do %>
+  <h4 class="panel-title pull-left" style="padding-top: 7.5px;">
+    <strong><%= pluralize Payment.count, "Payment" %></strong>
+  </h4>
+  Customer Name:
+  <%= form_tag payments_path, :method => 'get' do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>
   </p>
-<% end %>
+  <% end %>
 </div>
 <table class="table-orderHistory">
   <thead>
     <tr>
       <th> CustomerName </th>
-      <th> DOB </th>
       <th> Amount </th>
       <th> ProductName </th>
-      <th> State </th>
-      <th> Country </th>
       <th> Phone</th>
       <th> Email</th>
       <th> CardNumber </th>
@@ -33,19 +30,15 @@ Customer Name:
   <tbody>
     <% @payments.each do |payment| %>
     <tr>
-
-      <td><%= payment.customer_name %></td>
-      <td><%= payment.date_of_birth.strftime("%d-%m-%Y") if payment.date_of_birth.present? %></td>
+    <td><%= payment.customer_name %></td>
       <td><%= payment.amount %></td>
       <td><%= payment.product_name %></td>
-      <td><%= payment.state %></td>
-      <td><%= payment.country %></td>
       <td><%= payment.phone %></td>
       <td><%= payment.email %> </td>
       <td><%= payment.card_number %> </td>
       <td><%= payment.ip_address %> </td>
       <td><%= link_to "Show Pdf", payment_pdf_payment_url(payment, signature_token: payment.token), :target => '_blank' %>
-            <%= link_to "Delete", payment_path(payment,signature_token: payment.token), :method => :delete, :data => { :confirm => 'Are you sure want to delete?' } %></td>
+        <%= link_to "Delete", payment_path(payment,signature_token: payment.token), :method => :delete, :data => { :confirm => 'Are you sure want to delete?' } %></td>
 
       </tr>
       <%end%>
@@ -53,21 +46,21 @@ Customer Name:
   </table>
 
 
-<style>
-table, td, th {
-    border: 1px solid green;
-}
+  <style>
+    table, td, th {
+      border: 1px solid green;
+    }
 
-th {
-    background-color: green;
-    color: white;
-}
+    th {
+      background-color: green;
+      color: white;
+    }
 
-div {
-    background-color: lightgrey;
-    width: 100%;
-    padding: 25px;
- 
-    margin: 25px;
-}
-</style>
+    div {
+      background-color: lightgrey;
+      width: 100%;
+      padding: 25px;
+
+      margin: 25px;
+    }
+  </style>
