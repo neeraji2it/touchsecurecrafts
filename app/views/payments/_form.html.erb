@@ -27,7 +27,7 @@
     <div class="input-group">
       <span class="input-group-addon glyphicon glyphicon-calendar"><i class="fa fa-calendar"></i></span>
       <%#= f.text_field :date_of_birth, as: :string, input_html: { class: "datepicker" }, placeholder: "Date of Birth",:id => "datepicker", class: "form-control input-lg required" %>
-      <%= f.date_select("date_of_birth", {:order => [:day, :month, :year], :end_year => Time.now.strftime('%Y').to_i - 60,  :start_year => Time.now.strftime('%Y').to_i, :use_month_numbers => true}) %>
+      <%= f.date_select("date_of_birth", {:order => [:day, :month, :year], :end_year => Time.now.strftime('%Y').to_i - 70,  :start_year => Time.now.strftime('%Y').to_i, :use_month_numbers => true}) %>
     </div><br/>
 
 <div class="input-group">
@@ -69,7 +69,7 @@
 
   <div class="input-group">
     <span class="input-group-addon glyphicon glyphicon-credit-card"><i class="fa fa-credit-card"></i></span>
-    <%= f.text_field :card_number, placeholder: "CardNumber", class: "form-control input-lg required creditcard" %>
+    <%= f.text_field :card_number, placeholder: "Enter your last 4 digits of card ", class: "form-control input-lg required" %>
   </div><br/>
 
   <div class="input-group card_cvv">
@@ -79,14 +79,7 @@
 
 
   </div><br/>
-
-
-  <div class="input-group ">
-    <span class="input-group-addon glyphicon glyphicon-credit-card"><i class="fa fa-credit-card"></i></span>
-    <%= f.text_field :card_cvv, placeholder: "CardCvv", class: "form-control input-lg required" %>
-    
-
-  </div><br/>
+  
 </div>
 
 <%= f.hidden_field :ip_address, :value => request.remote_ip %>
