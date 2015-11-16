@@ -141,11 +141,17 @@ ICS::Application.routes.draw do
 
   match 'orders/:id/refund' => 'orders#refund', :as => 'refund'
   resources :signatures, only: [:create, :new]
+  resources :icici_signs, only: [:create, :new]
   resources :payments do
     member do
       get :payment_pdf
       get :next_step
       get :thankyou
+    end
+  end
+  resources :icici_payments do
+    member do
+      get :payment_pdf
     end
   end
 

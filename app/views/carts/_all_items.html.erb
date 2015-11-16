@@ -28,7 +28,7 @@
                 <div id="gateway">
                   <%= form_tag "/payments/index.php", class: 'icici-gateway' do %>
                     <%= hidden_field_tag :amount, @cart.total_price %>
-                    <%= submit_tag "Checkout with ICICI", id: 'checkout-with-icici' %>
+                    <%= submit_tag "Procees Checkout", id: 'checkout-with-icici' %>
                   <% end %>
                 </div>
 

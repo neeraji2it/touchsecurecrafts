@@ -1,0 +1,114 @@
+
+<div class="causesBox">
+
+  <div class="row">
+    <div class="container">
+
+      <div class="col-xs-12 col-sm-10 right-pannel">
+       <div class="panel panel-info panel-pdf">
+         <h3 class="panel-title">
+          Verify & Place Signature
+        </h3>
+       
+        <div class="panel-body">
+          <div class="row">
+            <b>Customer Name:</b>&nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>  <%= @payment.customer_name %></strong>
+            <hr/>
+            <br/>
+            <b>Date of birth:</b>&nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>     <%= @payment.date_of_birth.strftime("%d-%m-%Y") if @payment.date_of_birth.present?%>  </strong> 
+            <hr/>
+            <br/>
+            <b>Customer Email:</b>&nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>  <%= @payment.email %>  </strong> 
+              <hr/>
+            <br/>
+            <b>Amount:</b></td>&nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>  <%= number_to_currency @payment.amount %>  </strong> 
+  <hr/>
+            <br/>
+            <b>Product Name:</b>&nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>   <%= @payment.product_name %>  </strong> 
+  <hr/>
+            <br/>
+            <b>Address:</b>&nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>   <%= @payment.address %>  </strong>   <hr/>
+            <br/>
+            <b>City:</b>&nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>  <%= @payment.city %>    </strong>   <hr/>
+            <br/>
+            <b>State:</b>&nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>  <%= @payment.state %>    </strong>   <hr/>
+            <br/>
+
+            <b>Postal Code:</b>&nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>  <%= @payment.post_code %>    </strong>  <hr/> 
+            <br/>
+            <b>Country:</b>&nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>   <%= @payment.country %>  </strong>  <hr/> 
+            <br/>
+            <b>Phone:</b>&nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>  <%= @payment.phone %>  </strong>   <hr/>
+            <br/>
+            <b>Card Number:</b>&nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>    <%= @payment.card_number %>  </strong>  <hr/> 
+            <br/>
+            <b>Card Expiry:</b>&nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>   <%= @payment.card_expiry %></strong>   <hr/>
+            <br/>
+               <p class="text-info"> confirm that I have read all terms and conditions along with other policies mentioned on touchsecurecrafts and authorise them to charge my credit card against products I have already purchased.There is no confusion or any room for dispute.</p>
+                      </div>
+          </div>
+
+          <!-- panel footer -->
+          
+          <div class="panel-footer clearfix">
+            <div class="signature-wrapper">
+              <% if @payment.is_signed && @payment.sign.present? %>
+              <%= render 'signature' %>
+              <% else %>
+              <%= link_to "click here to sign", new_icici_sign_path(:icici_payment_id => @payment.id), :remote => true,:class => "selected_btn" %>|
+              <%= link_to "Edit Payment", edit_icici_payment_path(:icici_payment_id => @payment.id),:class => "selected_btn" %>
+              <br/>
+              <div id="Signature">
+                
+              </div>
+              <% end %>
+            </div>
+         </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .text-info {
+    color: #31708f;
+}
+.selected_btn
+{
+border : solid 2px #ffffff;
+  border-radius : 3px;
+  moz-border-radius : 3px;
+  -webkit-box-shadow : 0px 0px 5px rgba(0,0,0,1.0);
+  -moz-box-shadow : 0px 0px 5px rgba(0,0,0,1.0);
+  box-shadow : 0px 0px 5px rgba(0,0,0,1.0);
+  font-size : 20px;
+  color : #d1ff6e;
+  padding : 1px 10px;
+  background : #053494;
+  background : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#053494), color-stop(100%,#addbff));
+  background : -moz-linear-gradient(top, #053494 0%, #addbff 100%);
+  background : -webkit-linear-gradient(top, #053494 0%, #addbff 100%);
+  background : -o-linear-gradient(top, #053494 0%, #addbff 100%);
+  background : -ms-linear-gradient(top, #053494 0%, #addbff 100%);
+  background : linear-gradient(top, #053494 0%, #addbff 100%);
+  filter : progid:DXImageTransform.Microsoft.gradient( startColorstr='#053494', endColorstr='#addbff',GradientType=0 );
+
+}
+</style>
