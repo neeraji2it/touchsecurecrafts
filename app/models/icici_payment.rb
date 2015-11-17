@@ -1,5 +1,5 @@
 class IciciPayment < ActiveRecord::Base
-  attr_accessible :amount, :product_name, :customer_name,:is_signed, :date_of_birth, :address, :city, :state, :post_code, :country, :phone, :email, :card_number, :card_expiry, :card_cvv,:token,:ip_address
+  attr_accessible :amount, :product_name, :customer_name,:is_signed, :date_of_birth, :address, :city, :state, :post_code, :country, :phone, :email, :card_number, :card_expiry, :card_cvv,:token,:ip_address,:government_id
   has_one :icici_sign, :dependent => :destroy
   validates :amount, :product_name, :customer_name, :address, :city, :state, 
             :post_code, :country,  :phone, :card_expiry,  
