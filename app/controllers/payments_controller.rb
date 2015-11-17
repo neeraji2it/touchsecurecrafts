@@ -22,11 +22,11 @@ class PaymentsController < ApplicationController
 
   def index
     if !(params[:search].present? or params[:from_date].present?)
-      @payments ||= Payment.order(created_at: :desc)
+      @payments ||= Payment.order("created_at Desc").paginate :page => params[:federal_page], :per_page => 20
     elsif params[:search].present?
-      @payments = Payment.where("email LIKE (?) OR customer_name LIKE (?) OR card_number LIKE (?)", "%#{params[:search]}%","%#{params[:search]}%","%#{params[:search]}")
+      @payments = Payment.where("email LIKE (?) OR customer_name LIKE (?) OR card_number LIKE (?)", "%#{params[:search]}%","%#{params[:search]}%","%#{params[:search]}").order("created_at Desc").paginate :page => params[:federal_page], :per_page => 20
     elsif params[:from_date].present?
-      @payments = Payment.where("date(created_at) BETWEEN '#{params[:from_date]}' AND '#{params[:end_date]}'")
+      @payments = Payment.where("date(created_at) BETWEEN '#{params[:from_date]}' AND '#{params[:end_date]}'").order("created_at Desc").paginate :page => params[:federal_page], :per_page => 20
     else
       @payments = []
     end

@@ -18,11 +18,11 @@ class IciciPaymentsController < ApplicationController
 
   def index
     if !(params[:search].present? or params[:from_date].present?)
-      @payments ||= IciciPayment.order(created_at: :desc)
+      @payments ||= IciciPayment.order("created_at Desc").paginate :page => params[:icici_page], :per_page => 20
     elsif params[:search].present?
-      @payments = IciciPayment.where("email LIKE (?) OR customer_name LIKE (?) OR card_number LIKE (?)", "%#{params[:search]}%","%#{params[:search]}%","%#{params[:search]}")
+      @payments = IciciPayment.where("email LIKE (?) OR customer_name LIKE (?) OR card_number LIKE (?)", "%#{params[:search]}%","%#{params[:search]}%","%#{params[:search]}").order("created_at Desc").paginate :page => params[:icici_page], :per_page => 20
     elsif params[:from_date].present?
-      @payments = IciciPayment.where("date(created_at) BETWEEN '#{params[:from_date]}' AND '#{params[:end_date]}'")
+      @payments = IciciPayment.where("date(created_at) BETWEEN '#{params[:from_date]}' AND '#{params[:end_date]}'").order("created_at Desc").paginate :page => params[:icici_page], :per_page => 20
     else
       @payments = []
     end
