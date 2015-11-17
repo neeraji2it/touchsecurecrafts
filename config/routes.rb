@@ -147,11 +147,13 @@ ICS::Application.routes.draw do
       get :payment_pdf
       get :next_step
       get :thankyou
+      get :resend
     end
   end
   resources :icici_payments do
     member do
       get :payment_pdf
+      get :resend
     end
   end
 

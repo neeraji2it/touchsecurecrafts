@@ -78,7 +78,13 @@ class ApplicationController < ActionController::Base
 
   def require_http_for_admin
     authenticate_or_request_with_http_basic do |login, password|
-      login == "dine-media" && password=="dine!@#$%"
+      login == "federal_touchsecure" && password== "federal!@#"
+    end
+  end
+  
+  def require_http_for_icici_admin
+    authenticate_or_request_with_http_basic do |login, password|
+      login == "icici_touchsecure" && password== "icici!@#"
     end
   end
 
