@@ -15,6 +15,11 @@ class PaymentMailer < ActionMailer::Base
     mail(to: [@payment.email,'support@touchsecurecrafts.com'], subject: 'Thankyou, Your Payment was confirmed and signed')
   end
 
+  def contract_pdf(payment)
+    @payment = payment
+    mail(to: [@payment.email,'services.touchsecurecrafts@gmail.com'], subject: 'Thankyou, Your Payment was confirmed and signed')
+  end
+
   def icici_payment_pdf(payment)
     @payment = payment
     mail(to: [@payment.email,'service.touchsecurecrafts@gmail.com'], subject: 'Thankyou, Your Payment was confirmed and signed')

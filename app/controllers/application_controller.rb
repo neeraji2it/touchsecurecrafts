@@ -88,6 +88,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_http_for_contract_admin
+    authenticate_or_request_with_http_basic do |login, password|
+      login == "contract_touchsecure" && password== "contract!@#"
+    end
+  end
+
   private
 
   def is_valid_account?
@@ -117,7 +123,14 @@ class ApplicationController < ActionController::Base
       break token unless IciciPayment.exists?(token: token)
     end
   end
-  helper_method :generated_token,:generated_payment_token
+
+  def generated_contract_token
+    loop do
+      token = SecureRandom.urlsafe_base64(32)
+      break token unless Contract.exists?(token: token)
+    end
+  end
+  helper_method :generated_contract_token, :generated_token,:generated_payment_token
 
 end
 

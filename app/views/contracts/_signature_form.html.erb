@@ -1,0 +1,53 @@
+
+
+
+<div class="modal-header">
+  <h2>Signature Form</h2>
+</div>
+
+<%= simple_form_for @signature, url: contract_signs_path, method: :post do |f| %>
+  <div class="modal-body">
+<div class="borderd">
+  <canvas class="pad" width="350" height="100"></canvas>
+</div>
+<%= f.hidden_field :signature, class: 'output' %>
+<%= f.hidden_field :contract_id, value: @payment.id %>
+</div>
+<%= f.submit 'Done', class: 'btn btn-sm btn-primary' %>
+
+<% end %>
+
+
+<script>
+  $(document).ready(function () {
+    $('#new_contract_sign').signaturePad({
+      drawOnly: true,
+      lineMargin: 0,
+      lineTop: 140,
+      penColour: '#2D2D2D'
+    });
+  });
+</script>
+
+<style>
+.modal-header
+{
+  border-bottom: 1px solid #e5e5e5;
+  min-height: 16.4286px;
+  padding: 15px;
+}
+
+.modal-body {
+    padding: 15px;
+    position: relative;
+}
+/*.borderd
+{
+  width: 400px
+  height: 80px
+  padding: 5px
+  border: 1px groove #238adb
+  margin: auto
+}
+  */
+</style>

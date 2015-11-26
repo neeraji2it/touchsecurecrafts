@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verified Payment</title>
+</head>
+<%= render :partial => 'signature-css' %>
+<%= render :partial => 'signature-js' %>
+<body>
+  <div class="row">
+    <div class="container">
+      <div class="col-xs-12 col-sm-10 right-pannel">
+        <div class="panel panel-info panel-pdf">
+          <!-- panel heading -->
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              Verified Payment
+            </h3>
+          </div>
+
+          <!-- panel body -->
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-9 col-lg-9"> 
+                <table class="table table-user-information">
+                  <tbody>
+                    <tr>
+                      <td>Customer Name</td>
+                      <td><%= @payment.customer_name %></td>
+                    </tr>
+                    <tr>
+                      <td>Date of birth</td>
+                      <td><%= @payment.date_of_birth %></td>
+                    </tr>
+                    <tr>
+                      <td>Customer Email</td>
+                      <td><%= @payment.email %></td>
+                    </tr>
+                    <tr>
+                      <td>Amount</td>
+                      <td><%= number_to_currency @payment.amount %></td>
+                    </tr>
+                    <tr>
+                      <td>Product Name</td>
+                      <td><%= @payment.product_name %></td>
+                    </tr>
+                    <tr>
+                      <td>Address</td>
+                      <td><%= @payment.address %></td>
+                    </tr>
+                    <td>City</td>
+                    <td><%= @payment.city %></td>
+                  </tr>
+                  <td>State</td>
+                  <td><%= @payment.state %></td>
+                </tr>
+                <tr>
+                  <td>Postal Code</td>
+                  <td><%= @payment.post_code %></td>
+                </tr>
+                <td>Country</td>
+                <td><%= @payment.country %></td>
+              </tr>
+            </tr>
+            <td>Phone</td>
+            <td><%= @payment.phone %></td>
+          </tr>
+        </tr>
+        <td>Card Number</td>
+        <td>
+          <%= @payment.card_number %>                      
+        </td>
+      </tr>
+      <tr>
+        <td>Card Expiry</td>
+        <td><%= @payment.card_expiry %></td>
+      </tr>
+      <tr>
+        <td>Ip Adress:</td>
+        <td>
+          <%= @payment.ip_address %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <p class="text-info"> I confirm that I have read all terms and conditions along with other policies mentioned on touchsecurecrafts and authorise them to charge my credit card against products I have already purchased.There is no confusion or any room for dispute.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+
+<!-- panel footer -->
+<% if @payment.contract_sign.present? %>
+<div class="panel-footer clearfix">
+  <div class="signature-wrapper">
+    <div class="signature-box" id="signature-box">
+      <canvas class="pad" width="380" height="100"></canvas>
+    </div>
+    <span class="signature-date-placeholder">
+      <%= @payment.contract_sign.created_at.utc.strftime("%B %d %Y - %H:%M %p") unless @payment.try(:contract_sign).blank? %>
+    </span>
+
+    <script>
+      $(function() {
+        var data = <%= @payment.contract_sign.signature.to_json.html_safe %>;
+        $("#signature-box").signaturePad({displayOnly: true}).regenerate(data);
+      });
+    </script>
+  </div>
+</div>
+</div>
+<%end%>
+</div>
+</div>
+</div>
+</body>
+</html>
